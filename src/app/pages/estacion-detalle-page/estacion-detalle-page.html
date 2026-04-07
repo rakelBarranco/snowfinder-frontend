@@ -1,0 +1,125 @@
+<div class="container mt-5">
+  @if (loading) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>
+  }
+
+  @if (estacion) {
+    <div class="card shadow border-0">
+      <div class="card-header bg-dark text-white p-4">
+        <h2 class="mb-0 fw-bold">🏔️ {{ estacion.nombre }}</h2>
+        <span class="badge bg-secondary mt-2">{{ estacion.pais }}</span>
+      </div>
+
+      @if (isLoggedIn()) {
+        <div class="px-4 pt-3">
+          <button
+            class="btn btn-sm"
+            [class.btn-warning]="esFavorito"
+            [class.btn-outline-warning]="!esFavorito"
+            (click)="toggleFavorito()">
+            {{ esFavorito ? '⭐ Quitar de favoritos' : '☆ Añadir a favoritos' }}
+          </button>
+        </div>
+      }
+
+      <div class="card-body p-4">
+        <p class="text-muted">{{ estacion.descripcion }}</p>
+        <div class="row g-3 mt-2">
+          <div class="col-md-4">
+            <div class="card text-center border-0 bg-light p-3">
+              <div class="fs-3">🎿</div>
+              <div class="fw-bold text-primary fs-5">{{ estacion.kmPistas }} km</div>
+              <div class="text-muted small">de pistas</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center border-0 bg-light p-3">
+              <div class="fs-3">⛰️</div>
+              <div class="fw-bold text-success fs-5">{{ estacion.altitud }} m</div>
+              <div class="text-muted small">de altitud</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center border-0 bg-light p-3">
+              <div class="fs-3">📍</div>
+              <div class="fw-bold text-secondary fs-5">{{ estacion.latitud }}, {{ estacion.longitud }}</div>
+              <div class="text-muted small">coordenadas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    @if (meteo) {
+      <div class="mt-4">
+        <h5 class="fw-bold mb-3">🌤️ Condiciones actuales</h5>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="card text-center border-0 bg-light p-3">
+              <div class="fs-3">🌡️</div>
+              <div class="fw-bold text-danger fs-5">{{ meteo.temperature }}°C</div>
+              <div class="text-muted small">temperatura</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center border-0 bg-light p-3">
+              <div class="fs-3">❄️</div>
+              <div class="fw-bold text-primary fs-5">{{ meteo.snowDepth }} m</div>
+              <div class="text-muted small">nieve</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center border-0 bg-light p-3">
+              <div class="fs-3">💨</div>
+              <div class="fw-bold text-success fs-5">{{ meteo.windSpeed }} km/h</div>
+              <div class="text-muted small">viento</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- Opiniones -->
+    <div class="mt-4">
+      <h5 class="fw-bold mb-3">💬 Opiniones</h5>
+
+      @if (opiniones.length === 0) {
+        <p class="text-muted">No hay opiniones todavía. ¡Sé el primero!</p>
+      }
+
+      @for (opinion of opiniones; track opinion.id) {
+        <div class="card border-0 bg-light mb-3 p-3">
+          <div class="d-flex justify-content-between">
+            <span class="fw-bold">👤 {{ opinion.usuario.nombre }}</span>
+            <span class="text-warning">{{ '⭐'.repeat(opinion.puntuacion) }}</span>
+          </div>
+          <p class="mb-0 mt-2 text-muted">{{ opinion.comentario }}</p>
+        </div>
+      }
+
+      @if (isLoggedIn()) {
+        <div class="card border-0 shadow-sm p-4 mt-3">
+          <h6 class="fw-bold mb-3">Escribe tu opinión</h6>
+          <div class="mb-3">
+            <label class="form-label">Puntuación (1-5)</label>
+            <input type="number" class="form-control" [(ngModel)]="nuevaPuntuacion" min="1" max="5" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Comentario</label>
+            <textarea class="form-control" [(ngModel)]="nuevoComentario" rows="3"></textarea>
+          </div>
+          <button class="btn btn-dark w-100" (click)="enviarOpinion()">
+            Enviar opinión
+          </button>
+        </div>
+      }
+    </div>
+
+    <div class="mt-4">
+      <h5 class="fw-bold mb-3">📍 Ubicación</h5>
+      <div id="mapa" style="height: 350px; border-radius: 12px;"></div>
+    </div>
+  }
+</div>

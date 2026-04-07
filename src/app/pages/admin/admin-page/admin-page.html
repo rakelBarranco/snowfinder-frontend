@@ -1,0 +1,88 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">🛠️ Panel de administración</h2>
+    <button class="btn btn-dark" (click)="nuevaEstacion()">+ Nueva estación</button>
+  </div>
+
+  @if (modoEdicion) {
+    <div class="card shadow-sm border-0 p-4 mb-4">
+      <h5 class="fw-bold mb-3">{{ estacionSeleccionada.id ? 'Editar' : 'Nueva' }} estación</h5>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Nombre</label>
+          <input type="text" class="form-control" [(ngModel)]="estacionSeleccionada.nombre" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">País</label>
+          <input type="text" class="form-control" [(ngModel)]="estacionSeleccionada.pais" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Km de pistas</label>
+          <input type="number" class="form-control" [(ngModel)]="estacionSeleccionada.kmPistas" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Altitud (m)</label>
+          <input type="number" class="form-control" [(ngModel)]="estacionSeleccionada.altitud" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Latitud</label>
+          <input type="number" class="form-control" [(ngModel)]="estacionSeleccionada.latitud" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Longitud</label>
+          <input type="number" class="form-control" [(ngModel)]="estacionSeleccionada.longitud" />
+        </div>
+        <div class="col-12">
+          <label class="form-label">Descripción</label>
+          <textarea class="form-control" [(ngModel)]="estacionSeleccionada.descripcion" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="d-flex gap-2 mt-3">
+        <button class="btn btn-dark" (click)="guardarEstacion()">Guardar</button>
+        <button class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
+  }
+
+  @if (loading) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>
+  }
+
+  <div class="card shadow-sm border-0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead class="table-dark">
+        <tr>
+          <th class="ps-4">Nombre</th>
+          <th>País</th>
+          <th>Km pistas</th>
+          <th>Altitud</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (estacion of estaciones; track estacion.id) {
+            <tr>
+              <td class="ps-4 fw-bold">{{ estacion.nombre }}</td>
+              <td><span class="badge bg-secondary">{{ estacion.pais }}</span></td>
+              <td>{{ estacion.kmPistas }} km</td>
+              <td>{{ estacion.altitud }} m</td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <button class="btn btn-outline-primary btn-sm" (click)="editarEstacion(estacion)">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                  <button class="btn btn-outline-danger btn-sm" (click)="eliminarEstacion(estacion.id)">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
