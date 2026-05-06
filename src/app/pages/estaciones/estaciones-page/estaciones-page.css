@@ -1,0 +1,8 @@
+.estacion-card {
+  cursor: pointer;
+}
+
+.estacion-card:hover .btn-snow-outline {
+  background-color: var(--snow-blue);
+  color: var(--snow-black);
+}

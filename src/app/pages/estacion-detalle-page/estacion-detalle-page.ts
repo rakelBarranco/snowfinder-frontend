@@ -8,16 +8,10 @@ import {AuthService} from '../../services/auth-service';
 import {FavoritoService} from '../../services/favorito-service';
 import {OpinionService} from '../../services/opinion-service';
 import {FormsModule} from '@angular/forms';
-import {DatePipe} from '@angular/common';
-
-
 
 @Component({
   selector: 'app-estacion-detalle-page',
-  imports: [
-    FormsModule,
-    DatePipe
-  ],
+  imports: [FormsModule],
   templateUrl: './estacion-detalle-page.html',
   styleUrl: './estacion-detalle-page.css',
 })
@@ -29,7 +23,6 @@ export default class EstacionDetallePage implements OnInit {
   private favoritoService = inject(FavoritoService);
   private opinionService = inject(OpinionService);
   private authService = inject(AuthService);
-
 
   estacion: Estacion | null = null;
   meteo: Meteo | null = null;
@@ -112,6 +105,12 @@ export default class EstacionDetallePage implements OnInit {
     return this.authService.isLoggedIn();
   }
 
+  formatearFecha(fecha: string): string {
+    const dias = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+    const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    const d = new Date(fecha);
+    return `${dias[d.getDay()]} ${d.getDate()} ${meses[d.getMonth()]}`;
+  }
 
   initMapa() {
     if (!this.estacion || this.mapaInicializado) return;

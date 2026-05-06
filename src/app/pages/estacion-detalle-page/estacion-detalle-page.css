@@ -1,0 +1,122 @@
+/* Meta info hero */
+.detalle-meta-item {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--snow-muted);
+}
+
+/* Descripción */
+.detalle-descripcion {
+  font-size: 1.05rem;
+  color: var(--snow-muted);
+  line-height: 1.9;
+  max-width: 800px;
+}
+
+/* Meteorología */
+.meteo-card {
+  background-color: var(--snow-card);
+  border: 1px solid var(--snow-border);
+  height: 100%;
+}
+
+.meteo-card-main {
+  background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6e 100%);
+  border-color: rgba(79, 195, 247, 0.3);
+}
+
+.meteo-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--snow-muted);
+}
+
+.meteo-value {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--snow-white);
+  line-height: 1;
+}
+
+.meteo-unit {
+  font-size: 1.2rem;
+  color: var(--snow-muted);
+}
+
+/* Previsión */
+.prevision-card {
+  background-color: var(--snow-card);
+  border: 1px solid var(--snow-border);
+  min-width: 130px;
+  transition: border-color 0.2s ease;
+}
+
+.prevision-card:hover {
+  border-color: rgba(79, 195, 247, 0.3);
+}
+
+.prevision-fecha {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--snow-blue);
+}
+
+.prevision-temp-max {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--snow-white);
+}
+
+.prevision-temp-min {
+  font-size: 0.85rem;
+  color: var(--snow-muted);
+}
+
+/* Mapa */
+.detalle-mapa-wrapper {
+  border: 1px solid var(--snow-border);
+  overflow: hidden;
+}
+
+/* Opiniones */
+.opinion-item {
+  border-bottom: 1px solid var(--snow-border);
+}
+
+.opinion-autor {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--snow-white);
+}
+
+.opinion-puntuacion {
+  color: var(--snow-blue);
+  font-size: 0.8rem;
+}
+
+.opinion-texto {
+  color: var(--snow-muted);
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.opinion-form {
+  background-color: var(--snow-card);
+  border: 1px solid var(--snow-border);
+  margin-top: 2rem;
+}
+
+/* Favorito btn */
+.favorito-btn {
+  transition: all 0.2s ease;
+}

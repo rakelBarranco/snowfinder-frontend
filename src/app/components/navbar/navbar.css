@@ -1,0 +1,12 @@
+.active-link {
+  color: var(--snow-white) !important;
+}
+
+.active-link::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--snow-blue);
+  margin-top: 2px;
+}

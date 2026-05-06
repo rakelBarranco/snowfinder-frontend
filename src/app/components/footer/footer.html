@@ -1,37 +1,66 @@
-<footer class="bg-dark text-white mt-5">
+<footer class="mt-5" style="background-color: var(--snow-dark); border-top: 1px solid var(--snow-border);">
   <div class="container py-5">
-    <div class="row g-4">
+    <div class="row g-5">
 
-      <div class="col-md-4">
-        <h5 class="fw-bold text-uppercase mb-3" style="letter-spacing: 2px;">SNOW<span class="fw-light" style="color: #00f2ff;">FINDER</span></h5>
-        <p class="text-secondary small lh-lg">Plataforma de datos para el esquí profesional. Consulta estaciones, meteorología en tiempo real y opiniones de la comunidad.</p>
+      <!-- Brand -->
+      <div class="col-lg-5">
+        <div class="text-uppercase fw-bold mb-4" style="letter-spacing: 4px; font-size: 1.1rem; color: var(--snow-white);">
+          SNOW<span style="color: var(--snow-blue);">FINDER</span>
+        </div>
+        <p style="color: var(--snow-muted); font-size: 0.875rem; line-height: 1.8; max-width: 340px;">
+          Plataforma de datos para el esquí profesional. Consulta estaciones, meteorología en tiempo real y opiniones de la comunidad.
+        </p>
+        <div class="d-flex gap-3 mt-4">
+          <div class="snow-badge">Angular</div>
+          <div class="snow-badge">Spring Boot</div>
+          <div class="snow-badge">Open-Meteo</div>
+        </div>
       </div>
 
-      <div class="col-md-4">
-        <h6 class="text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 2px; color: #adb5bd;">Navegación</h6>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a routerLink="/home" class="text-secondary text-decoration-none small text-uppercase fw-bold">Inicio</a></li>
-          <li class="mb-2"><a routerLink="/estaciones" class="text-secondary text-decoration-none small text-uppercase fw-bold">Estaciones</a></li>
-          <li class="mb-2"><a routerLink="/favoritos" class="text-secondary text-decoration-none small text-uppercase fw-bold">Favoritos</a></li>
+      <!-- Navegación -->
+      <div class="col-lg-3">
+        <h6 class="label mb-4">Navegación</h6>
+        <ul class="list-unstyled footer-links">
+          <li class="mb-3"><a routerLink="/home">Inicio</a></li>
+          <li class="mb-3"><a routerLink="/estaciones">Estaciones</a></li>
+          <li class="mb-3"><a routerLink="/favoritos">Favoritos</a></li>
+          <li class="mb-3"><a routerLink="/perfil">Mi Perfil</a></li>
         </ul>
       </div>
 
-      <div class="col-md-4">
-        <h6 class="text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 2px; color: #adb5bd;">Tecnología</h6>
-        <ul class="list-unstyled">
-          <li class="mb-2"><span class="text-secondary small">Angular + Bootstrap</span></li>
-          <li class="mb-2"><span class="text-secondary small">Spring Boot + MySQL</span></li>
-          <li class="mb-2"><span class="text-secondary small">Open-Meteo API</span></li>
-          <li class="mb-2"><span class="text-secondary small">Leaflet Maps</span></li>
-        </ul>
+      <!-- Tecnología -->
+      <div class="col-lg-4">
+        <h6 class="label mb-4">Stack Tecnológico</h6>
+        <div class="d-flex flex-column gap-2">
+          <div class="footer-tech-item">
+            <i class="bi bi-braces me-2" style="color: var(--snow-blue);"></i>
+            <span>Angular 18 + Bootstrap 5</span>
+          </div>
+          <div class="footer-tech-item">
+            <i class="bi bi-server me-2" style="color: var(--snow-blue);"></i>
+            <span>Spring Boot + MySQL</span>
+          </div>
+          <div class="footer-tech-item">
+            <i class="bi bi-cloud me-2" style="color: var(--snow-blue);"></i>
+            <span>Open-Meteo API</span>
+          </div>
+          <div class="footer-tech-item">
+            <i class="bi bi-geo-alt me-2" style="color: var(--snow-blue);"></i>
+            <span>Leaflet Maps</span>
+          </div>
+        </div>
       </div>
 
     </div>
 
-    <hr class="border-secondary mt-4">
-    <div class="d-flex justify-content-between align-items-center pt-2">
-      <p class="text-secondary small mb-0">© 2025 SnowFinder</p>
-      <p class="text-secondary small mb-0">Datos meteorológicos por <span class="text-white">Open-Meteo</span></p>
+    <div class="mt-5 pt-4 d-flex flex-wrap justify-content-between align-items-center"
+         style="border-top: 1px solid var(--snow-border);">
+      <p class="mb-0" style="color: var(--snow-muted); font-size: 0.8rem;">
+        © 2025 SnowFinder — Trabajo de Fin de Grado
+      </p>
+      <p class="mb-0" style="color: var(--snow-muted); font-size: 0.8rem;">
+        Meteorología por <span style="color: var(--snow-white);">Open-Meteo</span>
+      </p>
     </div>
   </div>
 </footer>

@@ -1,83 +1,101 @@
-<div class="container-fluid p-0 bg-white">
+<div class="container-fluid p-0">
+
   @if (loading) {
     <div class="text-center py-5">
-      <div class="spinner-border text-primary fw-light" role="status" style="width: 3rem; height: 3rem;"></div>
-      <p class="mt-3 text-uppercase small text-muted" style="letter-spacing: 2px;">Cargando estación...</p>
+      <div class="spinner-border" role="status" style="color: var(--snow-blue); width: 3rem; height: 3rem;"></div>
+      <p class="mt-3 label">Cargando estación...</p>
     </div>
   }
 
   @if (estacion) {
+
     <!-- Hero -->
-    <div class="py-5" style="background-color: #f1f4f9;">
-      <div class="container py-4">
-        <p class="text-uppercase fw-bold text-primary mb-3" style="font-size: 0.8rem; letter-spacing: 3px;">Informe de Estación</p>
-        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+    <section class="snow-hero">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-4">
           <div>
-            <h1 class="display-3 fw-normal text-dark mb-3">{{ estacion.nombre }}</h1>
-            <div class="d-flex align-items-center gap-4 text-muted border-start border-3 ps-4">
-              <div class="text-uppercase fw-bold" style="font-size: 0.8rem;">{{ estacion.pais }}</div>
-              <div class="vr"></div>
-              <div class="text-uppercase fw-bold" style="font-size: 0.8rem;">{{ estacion.altitud }} m altitud</div>
-              <div class="vr"></div>
-              <div class="text-uppercase fw-bold" style="font-size: 0.8rem;">{{ estacion.kmPistas }} km de pistas</div>
+            <div class="label mb-3">Informe de Estación</div>
+            <h1 class="fw-light mb-4" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">{{ estacion.nombre }}</h1>
+            <div class="d-flex align-items-center gap-4 flex-wrap">
+              <div class="detalle-meta-item">
+                <i class="bi bi-geo-alt me-2" style="color: var(--snow-blue);"></i>
+                <span>{{ estacion.pais }}</span>
+              </div>
+              <div class="detalle-meta-item">
+                <i class="bi bi-arrow-up me-2" style="color: var(--snow-blue);"></i>
+                <span>{{ estacion.altitud }} m altitud</span>
+              </div>
+              <div class="detalle-meta-item">
+                <i class="bi bi-snow me-2" style="color: var(--snow-blue);"></i>
+                <span>{{ estacion.kmPistas }} km de pistas</span>
+              </div>
             </div>
           </div>
           @if (isLoggedIn()) {
-            <button class="btn rounded-0 px-5 py-3 text-uppercase fw-bold"
-                    [class.btn-dark]="esFavorito"
-                    [class.btn-outline-dark]="!esFavorito"
+            <button class="btn py-3 px-5 favorito-btn"
+                    [class.btn-snow]="esFavorito"
+                    [class.btn-snow-outline]="!esFavorito"
                     (click)="toggleFavorito()">
+              <i class="bi me-2" [class.bi-heart-fill]="esFavorito" [class.bi-heart]="!esFavorito"></i>
               {{ esFavorito ? 'Guardado' : 'Añadir a Favoritos' }}
             </button>
           }
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="container mt-5 pb-5">
+    <div class="container py-5">
 
       <!-- Descripción -->
       <section class="mb-5">
-        <h5 class="text-uppercase fw-bold mb-4" style="font-size: 0.85rem; letter-spacing: 1px;">Descripción General</h5>
-        <p class="fs-5 text-secondary fw-light lh-lg">{{ estacion.descripcion }}</p>
+        <div class="label mb-3">Descripción General</div>
+        <p class="detalle-descripcion">{{ estacion.descripcion }}</p>
       </section>
+
+      <hr class="snow-divider">
 
       <!-- Meteorología actual -->
       @if (meteo) {
         <section class="mb-5">
-          <h5 class="text-uppercase fw-bold mb-4" style="font-size: 0.85rem; letter-spacing: 1px;">Estado Meteorológico</h5>
-          <div class="row g-0 border">
-            <div class="col-md-4 p-4 text-center bg-dark text-white">
-              <div class="small text-uppercase fw-bold mb-2" style="opacity: 0.6; letter-spacing: 1px;">Temperatura</div>
-              <div class="display-4 fw-normal">{{ meteo.temperature }}°C</div>
+          <div class="label mb-4">Estado Meteorológico</div>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="meteo-card meteo-card-main text-center p-5">
+                <div class="meteo-label mb-2">Temperatura</div>
+                <div class="meteo-value">{{ meteo.temperature }}<span class="meteo-unit">°C</span></div>
+              </div>
             </div>
-            <div class="col-md-4 p-4 text-center border-start border-end">
-              <div class="small text-uppercase fw-bold text-muted mb-2" style="letter-spacing: 1px;">Nieve Acumulada</div>
-              <div class="display-4 fw-normal text-dark">{{ meteo.snowDepth }}<span class="fs-4 fw-light"> m</span></div>
+            <div class="col-md-4">
+              <div class="meteo-card text-center p-5">
+                <div class="meteo-label mb-2">Nieve Acumulada</div>
+                <div class="meteo-value">{{ meteo.snowDepth }}<span class="meteo-unit"> m</span></div>
+              </div>
             </div>
-            <div class="col-md-4 p-4 text-center">
-              <div class="small text-uppercase fw-bold text-muted mb-2" style="letter-spacing: 1px;">Viento</div>
-              <div class="display-4 fw-normal text-dark">{{ meteo.windSpeed }}<span class="fs-4 fw-light"> km/h</span></div>
+            <div class="col-md-4">
+              <div class="meteo-card text-center p-5">
+                <div class="meteo-label mb-2">Viento</div>
+                <div class="meteo-value">{{ meteo.windSpeed }}<span class="meteo-unit"> km/h</span></div>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- Previsión 7 días -->
         <section class="mb-5">
-          <h5 class="text-uppercase fw-bold mb-4" style="font-size: 0.85rem; letter-spacing: 1px;">Previsión 7 Días</h5>
+          <div class="label mb-4">Previsión 7 Días</div>
           <div class="d-flex gap-3 overflow-auto pb-2">
             @for (dia of meteo.prevision; track dia.fecha) {
-              <div class="bg-white border shadow-sm p-4 text-center flex-shrink-0" style="min-width: 120px;">
-                <div class="text-muted mb-3" style="font-size: 0.75rem;">
-                  {{ dia.fecha | date}}
-                </div>
-                <div class="fw-bold text-dark fs-4 mb-1">{{ dia.tempMax }}°</div>
-                <div class="text-muted small mb-3">{{ dia.tempMin }}° mín</div>
-                <div class="border-top pt-2">
+              <div class="prevision-card flex-shrink-0 text-center p-4">
+                <div class="prevision-fecha mb-3">{{ formatearFecha(dia.fecha) }}</div>
+                <div class="prevision-temp-max">{{ dia.tempMax }}°</div>
+                <div class="prevision-temp-min mb-3">{{ dia.tempMin }}° mín</div>
+                <div class="prevision-nieve">
                   @if (dia.nieve > 0) {
-                    <div class="small fw-bold text-primary" style="font-size: 0.7rem;">{{ dia.nieve }} cm</div>
+                    <span style="color: var(--snow-blue); font-size: 0.7rem; font-weight: 700;">
+                      <i class="bi bi-cloud-snow me-1"></i>{{ dia.nieve }} cm
+                    </span>
                   } @else {
-                    <div class="small text-muted" style="font-size: 0.7rem;">Sin nieve</div>
+                    <span style="color: var(--snow-muted); font-size: 0.7rem;">Sin nieve</span>
                   }
                 </div>
               </div>
@@ -86,40 +104,51 @@
         </section>
       }
 
+      <hr class="snow-divider">
+
       <!-- Mapa -->
       <section class="mb-5">
-        <h5 class="text-uppercase fw-bold mb-4" style="font-size: 0.85rem; letter-spacing: 1px;">Ubicación</h5>
-        <div class="border overflow-hidden">
-          <div id="mapa" style="height: 400px;"></div>
+        <div class="label mb-4">Ubicación</div>
+        <div class="detalle-mapa-wrapper">
+          <div id="mapa" style="height: 420px;"></div>
         </div>
       </section>
 
+      <hr class="snow-divider">
+
       <!-- Opiniones -->
       <section>
-        <h5 class="text-uppercase fw-bold mb-4" style="font-size: 0.85rem; letter-spacing: 1px;">Opiniones</h5>
+        <div class="label mb-4">Opiniones ({{ opiniones.length }})</div>
 
         @if (opiniones.length === 0) {
-          <div class="text-center py-5 border mb-4">
-            <p class="text-uppercase text-muted fw-bold small mb-0" style="letter-spacing: 1px;">Todavía no hay opiniones</p>
+          <div class="text-center py-5 snow-card mb-4">
+            <i class="bi bi-chat-dots mb-3" style="font-size: 2rem; color: var(--snow-muted);"></i>
+            <p class="label mb-0">Todavía no hay opiniones</p>
           </div>
         }
 
-        @for (opinion of opiniones; track opinion.id) {
-          <div class="py-4 border-bottom">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="fw-bold text-dark text-uppercase small">{{ opinion.usuario.nombre }}</span>
-              <span class="text-primary small fw-bold">{{ opinion.puntuacion }}/5</span>
+        <div class="mb-4">
+          @for (opinion of opiniones; track opinion.id) {
+            <div class="opinion-item py-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="opinion-autor">{{ opinion.usuario.nombre }}</span>
+                <div class="opinion-puntuacion">
+                  @for (i of [1,2,3,4,5]; track i) {
+                    <i class="bi" [class.bi-star-fill]="i <= opinion.puntuacion" [class.bi-star]="i > opinion.puntuacion"></i>
+                  }
+                </div>
+              </div>
+              <p class="opinion-texto">"{{ opinion.comentario }}"</p>
             </div>
-            <p class="text-secondary fw-light mb-0">"{{ opinion.comentario }}"</p>
-          </div>
-        }
+          }
+        </div>
 
         @if (isLoggedIn()) {
-          <div class="mt-5 p-4 bg-light border">
-            <h6 class="text-uppercase fw-bold mb-4" style="font-size: 0.75rem;">Escribir opinión</h6>
+          <div class="opinion-form p-4 p-lg-5">
+            <div class="label mb-4">Escribir Opinión</div>
             <div class="row g-3">
-              <div class="col-md-3">
-                <select class="form-select border rounded-0" [(ngModel)]="nuevaPuntuacion">
+              <div class="col-md-4">
+                <select class="snow-select w-100" [(ngModel)]="nuevaPuntuacion">
                   <option [ngValue]="5">5 - Excelente</option>
                   <option [ngValue]="4">4 - Bueno</option>
                   <option [ngValue]="3">3 - Normal</option>
@@ -128,10 +157,13 @@
                 </select>
               </div>
               <div class="col-12">
-                <textarea class="form-control border rounded-0" [(ngModel)]="nuevoComentario" rows="3" placeholder="Comparte tu opinión sobre la estación..."></textarea>
+                <textarea class="snow-input w-100" [(ngModel)]="nuevoComentario" rows="4"
+                          placeholder="Comparte tu experiencia en esta estación..."></textarea>
               </div>
             </div>
-            <button class="btn btn-dark rounded-0 px-4 py-2 mt-3 text-uppercase fw-bold small" (click)="enviarOpinion()">Publicar</button>
+            <button class="btn btn-snow px-5 py-3 mt-4" (click)="enviarOpinion()">
+              Publicar Opinión
+            </button>
           </div>
         }
       </section>

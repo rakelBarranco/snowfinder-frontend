@@ -1,25 +1,28 @@
-<div class="container mt-5 mb-5 ps-lg-0">
-  <div class="mb-5">
-    <h6 class="text-uppercase text-primary fw-bold mb-2" style="letter-spacing: 2px; font-size: 0.75rem;">Explorar dominio</h6>
-    <h2 class="fw-light display-5 text-dark">ESTACIONES DE ESQUÍ</h2>
+<!-- Header -->
+<section class="snow-hero">
+  <div class="container">
+    <div class="label mb-3">Explorar Dominio</div>
+    <h1 class="fw-light mb-0" style="font-size: clamp(2rem, 5vw, 3.5rem);">Estaciones de Esquí</h1>
   </div>
+</section>
 
+<div class="container py-5">
+
+  <!-- Filtros -->
   <div class="row g-3 mb-5">
     <div class="col-md-6">
       <input
         type="text"
-        class="form-control   bg-light border border-secondary-subtle rounded-0 py-3"
+        class="snow-input w-100"
         placeholder="Buscar estación..."
         [(ngModel)]="busqueda"
-        (ngModelChange)="filtrar()"
-        style="font-size: 0.85rem;" />
+        (ngModelChange)="filtrar()" />
     </div>
     <div class="col-md-4">
       <select
-        class="form-select bg-light border border-secondary-subtle rounded-0 py-3"
+        class="snow-select w-100"
         [(ngModel)]="paisSeleccionado"
-        (ngModelChange)="filtrar()"
-        style="font-size: 0.85rem;">
+        (ngModelChange)="filtrar()">
         <option value="">Todos los países</option>
         @for (pais of paises; track pais) {
           <option [value]="pais">{{ pais }}</option>
@@ -27,86 +30,90 @@
       </select>
     </div>
     <div class="col-md-2">
-      <button
-        class="btn btn-outline-dark w-100 rounded-0 py-3 text-uppercase fw-bold"
-        style="font-size: 0.75rem;"
-        (click)="limpiarFiltros()">
+      <button class="btn btn-snow-ghost w-100 py-3" (click)="limpiarFiltros()">
         Limpiar
       </button>
     </div>
   </div>
 
+  <!-- Spinner -->
   @if (loading) {
     <div class="text-center py-5">
-      <div class="spinner-border text-primary fw-light" role="status" style="width: 3rem; height: 3rem;"></div>
-      <p class="mt-3 text-uppercase small tracking-widest text-muted">Sincronizando estaciones...</p>
+      <div class="spinner-border" role="status" style="color: var(--snow-blue); width: 3rem; height: 3rem;"></div>
+      <p class="mt-3 label">Sincronizando estaciones...</p>
     </div>
   }
 
+  <!-- Grid estaciones -->
   <div class="row g-4">
     @for (estacion of estacionesPaginadas; track estacion.id) {
       <div class="col-md-6 col-lg-4">
-        <div class="card h-100 border-0 shadow-sm rounded-0 overflow-hidden bg-white">
-          <div class="p-4 border-bottom bg-light">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <h4 class="fw-bold mb-0 text-dark" style="font-size: 1.25rem;">{{ estacion.nombre }}</h4>
-              <span class="badge rounded-0 border text-dark text-uppercase fw-bold" style="font-size: 0.65rem; border-color: #0077b6 !important;">{{ estacion.pais }}</span>
+        <div class="snow-card h-100 d-flex flex-column estacion-card">
+          <div class="p-4 border-bottom" style="border-color: var(--snow-border) !important;">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="fw-bold mb-0" style="font-size: 1.1rem; color: var(--snow-white);">{{ estacion.nombre }}</h4>
+              <span class="snow-badge">{{ estacion.pais }}</span>
             </div>
-            <p class="text-muted small mb-0 lh-base line-clamp-2" style="height: 3em; overflow: hidden;">{{ estacion.descripcion }}</p>
+            <p style="color: var(--snow-muted); font-size: 0.8rem; line-height: 1.7; height: 3.4em; overflow: hidden;">
+              {{ estacion.descripcion }}
+            </p>
           </div>
 
-          <div class="card-body py-3">
+          <div class="p-4 flex-grow-1">
             <div class="row g-0">
-              <div class="col-6 border-end">
-                <div class="small text-uppercase text-muted fw-bold" style="font-size: 0.6rem;">Dominio</div>
-                <div class="fw-bold text-dark">{{ estacion.kmPistas }} <span class="small fw-normal">KM</span></div>
+              <div class="col-6 pe-3" style="border-right: 1px solid var(--snow-border);">
+                <div class="label mb-1" style="font-size: 0.6rem;">Dominio</div>
+                <div class="fw-bold" style="color: var(--snow-white);">{{ estacion.kmPistas }} <span style="color: var(--snow-muted); font-weight: 400; font-size: 0.8rem;">KM</span></div>
               </div>
               <div class="col-6 ps-3">
-                <div class="small text-uppercase text-muted fw-bold" style="font-size: 0.6rem;">Cota Máx</div>
-                <div class="fw-bold text-dark">{{ estacion.altitud }} <span class="small fw-normal">M</span></div>
+                <div class="label mb-1" style="font-size: 0.6rem;">Cota Máx</div>
+                <div class="fw-bold" style="color: var(--snow-white);">{{ estacion.altitud }} <span style="color: var(--snow-muted); font-weight: 400; font-size: 0.8rem;">M</span></div>
               </div>
             </div>
           </div>
 
-          <div class="card-footer bg-white border-0 p-4 pt-0">
-            <button class="btn btn-dark w-100 rounded-0 text-uppercase fw-bold py-2" style="font-size: 0.75rem; letter-spacing: 1px;"
-                    [routerLink]="['/estaciones', estacion.id]">
+          <div class="p-4 pt-0">
+            <button class="btn btn-snow-outline w-100 py-2" [routerLink]="['/estaciones', estacion.id]">
               Consultar Ficha
             </button>
           </div>
         </div>
       </div>
     }
+
     @if (estaciones.length === 0 && !loading) {
       <div class="col-12 text-center py-5">
-        <p class="text-uppercase text-muted fw-bold small" style="letter-spacing: 1px;">No se encontraron estaciones</p>
-        <button class="btn btn-outline-dark rounded-0 px-4 text-uppercase fw-bold small mt-2" (click)="limpiarFiltros()">Ver todas</button>
+        <p class="label mb-4">No se encontraron estaciones</p>
+        <button class="btn btn-snow-ghost px-4 py-2" (click)="limpiarFiltros()">Ver todas</button>
       </div>
     }
   </div>
+
+  <!-- Paginación -->
   @if (totalPaginas > 1) {
     <div class="d-flex justify-content-center align-items-center gap-2 mt-5">
-      <button class="btn btn-outline-dark rounded-0 px-3 py-2"
+      <button class="btn btn-snow-ghost px-3 py-2"
               [disabled]="paginaActual === 1"
               (click)="cambiarPagina(paginaActual - 1)">
         <i class="bi bi-chevron-left"></i>
       </button>
 
       @for (pagina of paginas; track pagina) {
-        <button class="btn rounded-0 px-3 py-2 fw-bold text-uppercase"
-                style="font-size: 0.75rem;"
-                [class.btn-dark]="pagina === paginaActual"
-                [class.btn-outline-dark]="pagina !== paginaActual"
+        <button class="btn px-3 py-2 fw-bold"
+                style="font-size: 0.75rem; letter-spacing: 1px; border-radius: 0;"
+                [class.btn-snow]="pagina === paginaActual"
+                [class.btn-snow-ghost]="pagina !== paginaActual"
                 (click)="cambiarPagina(pagina)">
           {{ pagina }}
         </button>
       }
 
-      <button class="btn btn-outline-dark rounded-0 px-3 py-2"
+      <button class="btn btn-snow-ghost px-3 py-2"
               [disabled]="paginaActual === totalPaginas"
               (click)="cambiarPagina(paginaActual + 1)">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   }
+
 </div>

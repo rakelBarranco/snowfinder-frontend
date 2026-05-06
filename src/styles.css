@@ -2,33 +2,273 @@
 @import 'bootstrap-icons/font/bootstrap-icons.min.css';
 @import 'leaflet/dist/leaflet.css';
 
+/* =============================================
+   FUENTES
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* =============================================
+   VARIABLES GLOBALES
+   ============================================= */
+:root {
+  --snow-black:     #0a0f1e;
+  --snow-dark:      #111827;
+  --snow-card:      #161d2f;
+  --snow-border:    rgba(255, 255, 255, 0.08);
+  --snow-blue:      #4fc3f7;
+  --snow-blue-dim:  #1e88e5;
+  --snow-white:     #f0f4ff;
+  --snow-muted:     #8892a4;
+  --snow-text:      #cbd5e1;
+  --snow-accent:    #7dd3fc;
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #f8fafc; /* Un blanco azulado muy suave */
-  color: #1e293b; /* Gris pizarra oscuro en lugar de negro puro */
+  background-color: var(--snow-black);
+  color: var(--snow-text);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Espaciado entre letras para títulos (estética nórdica) */
-.tracking-widest {
-  letter-spacing: 0.15em;
+/* =============================================
+   TIPOGRAFÍA
+   ============================================= */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--snow-white);
+  font-weight: 300;
 }
 
-/* Efecto de elevación suave para las tarjetas */
-.card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--snow-blue);
 }
 
-.card:hover {
-  box-shadow: 0 10px 30px rgba(0, 119, 182, 0.08) !important;
+.tracking-widest { letter-spacing: 0.2em; }
+.fs-xs { font-size: 0.72rem; }
+
+/* =============================================
+   CARDS
+   ============================================= */
+.snow-card {
+  background-color: var(--snow-card);
+  border: 1px solid var(--snow-border);
+  border-radius: 0;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-/* Botones con estilo más fino */
-.btn-primary {
-  background-color: #0077b6;
+.snow-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(79, 195, 247, 0.3);
+}
+
+/* =============================================
+   BOTONES
+   ============================================= */
+.btn-snow {
+  background-color: var(--snow-blue);
+  color: var(--snow-black);
   border: none;
-  font-weight: 600;
-  padding: 10px 24px;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 32px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* Clases auxiliares para el diseño */
-.fs-xs { font-size: 0.75rem; }
+.btn-snow:hover {
+  background-color: var(--snow-accent);
+  color: var(--snow-black);
+  transform: translateY(-1px);
+}
+
+.btn-snow-outline {
+  background-color: transparent;
+  color: var(--snow-blue);
+  border: 1px solid var(--snow-blue);
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 32px;
+  transition: all 0.2s ease;
+}
+
+.btn-snow-outline:hover {
+  background-color: var(--snow-blue);
+  color: var(--snow-black);
+}
+
+.btn-snow-ghost {
+  background-color: transparent;
+  color: var(--snow-muted);
+  border: 1px solid var(--snow-border);
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 32px;
+  transition: all 0.2s ease;
+}
+
+.btn-snow-ghost:hover {
+  color: var(--snow-white);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* =============================================
+   FORMULARIOS
+   ============================================= */
+.snow-input {
+  background-color: rgba(255,255,255,0.04);
+  border: 1px solid var(--snow-border);
+  border-radius: 0;
+  color: var(--snow-white);
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.snow-input:focus {
+  background-color: rgba(255,255,255,0.06);
+  border-color: var(--snow-blue);
+  color: var(--snow-white);
+  box-shadow: none;
+  outline: none;
+}
+
+.snow-input::placeholder {
+  color: var(--snow-muted);
+}
+
+.snow-select {
+  background-color: rgba(255,255,255,0.04);
+  border: 1px solid var(--snow-border);
+  border-radius: 0;
+  color: var(--snow-white);
+  padding: 12px 16px;
+  font-size: 0.9rem;
+}
+
+.snow-select:focus {
+  background-color: rgba(255,255,255,0.06);
+  border-color: var(--snow-blue);
+  color: var(--snow-white);
+  box-shadow: none;
+}
+
+.snow-select option {
+  background-color: var(--snow-dark);
+  color: var(--snow-white);
+}
+
+/* =============================================
+   SECCIONES Y SEPARADORES
+   ============================================= */
+.snow-section {
+  padding: 5rem 0;
+}
+
+.snow-divider {
+  border: none;
+  border-top: 1px solid var(--snow-border);
+  margin: 3rem 0;
+}
+
+.snow-hero {
+  background-color: var(--snow-dark);
+  border-bottom: 1px solid var(--snow-border);
+  padding: 5rem 0;
+}
+
+/* =============================================
+   BADGES
+   ============================================= */
+.snow-badge {
+  background-color: rgba(79, 195, 247, 0.1);
+  color: var(--snow-blue);
+  border: 1px solid rgba(79, 195, 247, 0.3);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 0;
+}
+
+/* =============================================
+   TABLAS
+   ============================================= */
+.snow-table {
+  color: var(--snow-text);
+}
+
+.snow-table thead th {
+  background-color: var(--snow-dark);
+  color: var(--snow-muted);
+  border-color: var(--snow-border);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+}
+
+.snow-table tbody tr {
+  border-color: var(--snow-border);
+  transition: background-color 0.15s ease;
+}
+
+.snow-table tbody tr:hover {
+  background-color: rgba(255,255,255,0.03);
+}
+
+.snow-table tbody td {
+  border-color: var(--snow-border);
+  padding: 1rem 1.5rem;
+  color: var(--snow-text);
+}
+
+/* =============================================
+   MODALES
+   ============================================= */
+.snow-modal .modal-content {
+  background-color: var(--snow-card);
+  border: 1px solid var(--snow-border);
+  border-radius: 0;
+  color: var(--snow-text);
+}
+
+/* =============================================
+   SCROLLBAR
+   ============================================= */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--snow-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--snow-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--snow-muted);
+}

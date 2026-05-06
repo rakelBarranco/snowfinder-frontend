@@ -1,35 +1,99 @@
-<div class="hero text-white py-5" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop'); background-size: cover; background-position: center; border-bottom: 1px solid #4a5568;">
-  <div class="container py-5 mt-4">
-    <h1 class="display-1 fw-bold tracking-widest text-uppercase mb-2" style="font-size: clamp(2.5rem, 8vw, 5rem); letter-spacing: -2px;">
-      SNOW<span class="fw-light" style="color: #00f2ff;">FINDER</span>
-    </h1>
-    <p class="lead text-light text-uppercase fw-medium mb-5" style="letter-spacing: 4px; font-size: 0.9rem;">
-      Infraestructura de datos para el esquí profesional
-    </p>
-    <a routerLink="/estaciones" class="btn btn-light btn-lg rounded-0 px-5 py-3 text-uppercase fw-bold shadow-lg" style="font-size: 0.8rem; letter-spacing: 2px;">
-      Abrir Catálogo
-    </a>
-  </div>
-</div>
-
-<div class="container py-5 my-5">
-  <div class="row g-0 border">
-    <div class="col-md-4 border-end p-5 text-center bg-white transition-hover">
-      <h6 class="fw-bold text-uppercase mb-3" style="font-size: 0.7rem; letter-spacing: 2px; color: gray;">01. Catálogo</h6>
-      <h5 class="fw-bold text-dark mb-3">ESTACIONES</h5>
-      <p class="text-muted small lh-lg">Acceso técnico a la base de datos de los dominios esquiables más importantes del continente.</p>
-    </div>
-
-    <div class="col-md-4 border-end p-5 text-center bg-white transition-hover">
-      <h6 class=" fw-bold text-uppercase mb-3" style="font-size: 0.7rem; letter-spacing: 2px;color: gray">02. Tiempo real</h6>
-      <h5 class="fw-bold text-dark mb-3">METEOROLOGÍA</h5>
-      <p class="text-muted small lh-lg">Sincronización de datos atmosféricos y estado del manto nivoso en tiempo real.</p>
-    </div>
-
-    <div class="col-md-4 p-5 text-center bg-white transition-hover">
-      <h6 class=" fw-bold text-uppercase mb-3" style="font-size: 0.7rem; letter-spacing: 2px; color: gray">03. Comunidad</h6>
-      <h5 class="fw-bold text-dark mb-3">OPINIONES</h5>
-      <p class="text-muted small lh-lg">Módulo de valoraciones y experiencias compartidas por usuarios verificados del sistema.</p>
+<!-- Hero -->
+<section class="hero-section position-relative overflow-hidden">
+  <div class="hero-overlay"></div>
+  <div class="container position-relative py-5">
+    <div class="row min-vh-75 align-items-center py-5">
+      <div class="col-lg-8">
+        <div class="label mb-4">Plataforma de Esquí Profesional</div>
+        <h1 class="hero-title mb-4">
+          SNOW<span style="color: var(--snow-blue);">FINDER</span>
+        </h1>
+        <p class="hero-subtitle mb-5">
+          Datos en tiempo real de las mejores estaciones de esquí europeas. Meteorología, mapas y opiniones de la comunidad.
+        </p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a routerLink="/estaciones" class="btn btn-snow px-5 py-3">
+            Explorar Estaciones
+          </a>
+          <a routerLink="/registro" class="btn btn-snow-ghost px-5 py-3">
+            Crear Cuenta
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
+  <!-- Indicador scroll -->
+  <div class="position-absolute bottom-0 start-50 translate-middle-x pb-4 text-center">
+    <div class="scroll-indicator">
+      <i class="bi bi-chevron-down" style="color: var(--snow-muted); font-size: 1.2rem;"></i>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="snow-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="label mb-3">¿Qué es SnowFinder?</div>
+      <h2 class="fw-light" style="font-size: 2.5rem;">Todo lo que necesitas para esquiar</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="snow-card p-5 h-100 text-center feature-card">
+          <div class="feature-icon mb-4">
+            <i class="bi bi-map"></i>
+          </div>
+          <div class="label mb-3">01. Catálogo</div>
+          <h5 class="fw-light mb-3" style="color: var(--snow-white);">Estaciones</h5>
+          <p style="color: var(--snow-muted); font-size: 0.875rem; line-height: 1.8;">
+            Acceso técnico a la base de datos de los dominios esquiables más importantes del continente europeo.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="snow-card p-5 h-100 text-center feature-card">
+          <div class="feature-icon mb-4">
+            <i class="bi bi-cloud-snow"></i>
+          </div>
+          <div class="label mb-3">02. Tiempo Real</div>
+          <h5 class="fw-light mb-3" style="color: var(--snow-white);">Meteorología</h5>
+          <p style="color: var(--snow-muted); font-size: 0.875rem; line-height: 1.8;">
+            Sincronización de datos atmosféricos y estado del manto nivoso actualizado en tiempo real.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="snow-card p-5 h-100 text-center feature-card">
+          <div class="feature-icon mb-4">
+            <i class="bi bi-people"></i>
+          </div>
+          <div class="label mb-3">03. Comunidad</div>
+          <h5 class="fw-light mb-3" style="color: var(--snow-white);">Opiniones</h5>
+          <p style="color: var(--snow-muted); font-size: 0.875rem; line-height: 1.8;">
+            Valoraciones y experiencias compartidas por usuarios verificados de la plataforma.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box text-center p-5">
+      <div class="label mb-4">Únete a la comunidad</div>
+      <h2 class="fw-light mb-4" style="font-size: 2rem;">¿Listo para encontrar tu montaña?</h2>
+      <p class="mb-5" style="color: var(--snow-muted); max-width: 500px; margin: 0 auto 2rem;">
+        Crea tu cuenta gratis y accede a todas las estaciones, guarda tus favoritas y comparte tu experiencia.
+      </p>
+      <a routerLink="/registro" class="btn btn-snow px-5 py-3">
+        Empezar Ahora
+      </a>
+    </div>
+  </div>
+</section>

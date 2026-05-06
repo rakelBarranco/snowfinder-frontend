@@ -1,9 +1,75 @@
-.hero {
-  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-  url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=1600');
+/* Hero */
+.hero-section {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(to bottom, rgba(10,15,30,0.5) 0%, rgba(10,15,30,0.85) 100%),
+    url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
-  min-height: 500px;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10,15,30,0.6) 0%, transparent 100%);
+}
+
+.hero-title {
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--snow-white);
+  line-height: 1;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--snow-muted);
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+.min-vh-75 {
+  min-height: 75vh;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* Feature cards */
+.feature-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--snow-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  color: var(--snow-blue);
+  background-color: rgba(79, 195, 247, 0.05);
+}
+
+/* CTA */
+.cta-section {
+  padding: 5rem 0;
+}
+
+.cta-box {
+  border: 1px solid var(--snow-border);
+  background: linear-gradient(135deg, var(--snow-card) 0%, rgba(79,195,247,0.05) 100%);
 }

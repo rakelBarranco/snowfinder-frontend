@@ -1,63 +1,49 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-5">
-      <div class="card shadow border-0">
-        <div class="card-header bg-dark text-white text-center p-4">
-          <h4 class="mb-0 fw-bold">❄️ Crear cuenta</h4>
-        </div>
-        <div class="card-body p-4">
+<div class="auth-page d-flex align-items-center justify-content-center">
+  <div class="auth-container">
 
-          @if (error) {
-            <div class="alert alert-danger">{{ error }}</div>
-          }
-
-          <div class="mb-3">
-            <label class="form-label fw-bold">Nombre</label>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="nombre"
-              placeholder="Tu nombre"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label fw-bold">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              [(ngModel)]="email"
-              placeholder="tu@email.com"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label fw-bold">Contraseña</label>
-            <input
-              type="password"
-              class="form-control"
-              [(ngModel)]="password"
-              placeholder="••••••••"
-            />
-          </div>
-
-          <button
-            class="btn btn-dark w-100 mt-2"
-            (click)="register()"
-            [disabled]="loading">
-            @if (loading) {
-              <span class="spinner-border spinner-border-sm me-2"></span>
-            }
-            Registrarse
-          </button>
-
-          <p class="text-center mt-3 text-muted small">
-            ¿Ya tienes cuenta?
-            <a routerLink="/login">Inicia sesión aquí</a>
-          </p>
-
-        </div>
-      </div>
+    <!-- Logo -->
+    <div class="text-center mb-5">
+      <div class="auth-logo mb-2">SNOW<span style="color: var(--snow-blue);">FINDER</span></div>
+      <div class="label">Crea tu cuenta gratis</div>
     </div>
+
+    <!-- Error -->
+    @if (error) {
+      <div class="auth-error mb-4">
+        <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+      </div>
+    }
+
+    <!-- Formulario -->
+    <div class="mb-4">
+      <div class="auth-label mb-2">Nombre</div>
+      <input type="text" class="snow-input w-100"
+             [(ngModel)]="nombre" placeholder="Tu nombre" />
+    </div>
+
+    <div class="mb-4">
+      <div class="auth-label mb-2">Email</div>
+      <input type="email" class="snow-input w-100"
+             [(ngModel)]="email" placeholder="tu@email.com" />
+    </div>
+
+    <div class="mb-5">
+      <div class="auth-label mb-2">Contraseña</div>
+      <input type="password" class="snow-input w-100"
+             [(ngModel)]="password" placeholder="••••••••" />
+    </div>
+
+    <button class="btn btn-snow w-100 py-3 mb-4" (click)="register()" [disabled]="loading">
+      @if (loading) {
+        <span class="spinner-border spinner-border-sm me-2"></span>
+      }
+      Crear Cuenta
+    </button>
+
+    <p class="text-center mb-0" style="color: var(--snow-muted); font-size: 0.85rem;">
+      ¿Ya tienes cuenta?
+      <a routerLink="/login" style="color: var(--snow-blue); text-decoration: none; font-weight: 600;">Inicia sesión aquí</a>
+    </p>
+
   </div>
 </div>

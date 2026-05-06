@@ -1,0 +1,55 @@
+.perfil-meta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--snow-muted);
+}
+
+/* Opiniones */
+.perfil-opinion {
+  border-bottom: 1px solid var(--snow-border);
+}
+
+.perfil-opinion-estacion {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--snow-white);
+}
+
+.perfil-opinion-puntuacion {
+  color: var(--snow-blue);
+  font-size: 0.8rem;
+}
+
+.perfil-opinion-texto {
+  color: var(--snow-muted);
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+/* Ajustes */
+.perfil-ajustes {
+  border: 1px solid var(--snow-border);
+}
+
+.perfil-ajuste-item {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--snow-border);
+}
+
+.perfil-ajuste-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--snow-muted);
+  margin-bottom: 0.25rem;
+}
+
+.perfil-ajuste-valor {
+  font-weight: 600;
+  color: var(--snow-white);
+}
