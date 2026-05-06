@@ -13,6 +13,12 @@ export interface Meteo {
   temperature: number;
   snowDepth: number;
   windSpeed: number;
+  prevision: {
+    fecha: string;
+    tempMax: number;
+    tempMin: number;
+    nieve: number;
+  }[];
 }
 
 export interface FavoritoResponse {
@@ -25,4 +31,5 @@ export interface Opinion {
   comentario: string;
   fecha: string;
   usuario: { nombre: string };
+  estacion: { id: number; nombre: string };
 }

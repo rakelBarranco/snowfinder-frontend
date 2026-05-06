@@ -1,37 +1,35 @@
-<!-- Hero -->
-<div class="hero text-white text-center">
-  <div class="container py-5">
-    <h1 class="display-3 fw-bold">❄️ SnowFinder</h1>
-    <p class="lead mt-3">Encuentra tu estación de esquí perfecta</p>
-    <a routerLink="/estaciones" class="btn btn-primary btn-lg mt-4">
-      Ver estaciones
+<div class="hero text-white py-5" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop'); background-size: cover; background-position: center; border-bottom: 1px solid #4a5568;">
+  <div class="container py-5 mt-4">
+    <h1 class="display-1 fw-bold tracking-widest text-uppercase mb-2" style="font-size: clamp(2.5rem, 8vw, 5rem); letter-spacing: -2px;">
+      SNOW<span class="fw-light" style="color: #00f2ff;">FINDER</span>
+    </h1>
+    <p class="lead text-light text-uppercase fw-medium mb-5" style="letter-spacing: 4px; font-size: 0.9rem;">
+      Infraestructura de datos para el esquí profesional
+    </p>
+    <a routerLink="/estaciones" class="btn btn-light btn-lg rounded-0 px-5 py-3 text-uppercase fw-bold shadow-lg" style="font-size: 0.8rem; letter-spacing: 2px;">
+      Abrir Catálogo
     </a>
   </div>
 </div>
 
-<!-- Cards informativas -->
-<div class="container my-5">
-  <div class="row g-4 text-center">
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm border-0 p-4">
-        <div class="fs-1">🏔️</div>
-        <h5 class="mt-3 fw-bold">Estaciones</h5>
-        <p class="text-muted">Explora las mejores estaciones de esquí de Europa con toda su información.</p>
-      </div>
+<div class="container py-5 my-5">
+  <div class="row g-0 border">
+    <div class="col-md-4 border-end p-5 text-center bg-white transition-hover">
+      <h6 class="fw-bold text-uppercase mb-3" style="font-size: 0.7rem; letter-spacing: 2px; color: gray;">01. Catálogo</h6>
+      <h5 class="fw-bold text-dark mb-3">ESTACIONES</h5>
+      <p class="text-muted small lh-lg">Acceso técnico a la base de datos de los dominios esquiables más importantes del continente.</p>
     </div>
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm border-0 p-4">
-        <div class="fs-1">🌤️</div>
-        <h5 class="mt-3 fw-bold">Meteorología</h5>
-        <p class="text-muted">Consulta el tiempo y el estado de la nieve en tiempo real.</p>
-      </div>
+
+    <div class="col-md-4 border-end p-5 text-center bg-white transition-hover">
+      <h6 class=" fw-bold text-uppercase mb-3" style="font-size: 0.7rem; letter-spacing: 2px;color: gray">02. Tiempo real</h6>
+      <h5 class="fw-bold text-dark mb-3">METEOROLOGÍA</h5>
+      <p class="text-muted small lh-lg">Sincronización de datos atmosféricos y estado del manto nivoso en tiempo real.</p>
     </div>
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm border-0 p-4">
-        <div class="fs-1">⭐</div>
-        <h5 class="mt-3 fw-bold">Opiniones</h5>
-        <p class="text-muted">Escribe y lee valoraciones de otros esquiadores.</p>
-      </div>
+
+    <div class="col-md-4 p-5 text-center bg-white transition-hover">
+      <h6 class=" fw-bold text-uppercase mb-3" style="font-size: 0.7rem; letter-spacing: 2px; color: gray">03. Comunidad</h6>
+      <h5 class="fw-bold text-dark mb-3">OPINIONES</h5>
+      <p class="text-muted small lh-lg">Módulo de valoraciones y experiencias compartidas por usuarios verificados del sistema.</p>
     </div>
   </div>
 </div>

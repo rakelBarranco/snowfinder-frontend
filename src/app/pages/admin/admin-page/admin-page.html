@@ -1,88 +1,114 @@
-<div class="container mt-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-bold">🛠️ Panel de administración</h2>
-    <button class="btn btn-dark" (click)="nuevaEstacion()">+ Nueva estación</button>
+<div class="container mt-5 mb-5 ps-lg-0">
+  <div class="row mb-5 align-items-end">
+    <div class="col">
+      <h6 class="text-uppercase text-primary fw-bold mb-2" style="letter-spacing: 1px; font-size: 0.75rem;">Administración</h6>
+      <h2 class="fw-light display-6 text-dark">Gestión de Catálogo</h2>
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-outline-dark rounded-0 px-4 py-2 text-uppercase fw-bold"
+              (click)="abrirModalNueva()" style="font-size: 0.8rem;">
+        Añadir nueva estación
+      </button>
+    </div>
   </div>
 
-  @if (modoEdicion) {
-    <div class="card shadow-sm border-0 p-4 mb-4">
-      <h5 class="fw-bold mb-3">{{ estacionSeleccionada.id ? 'Editar' : 'Nueva' }} estación</h5>
-      <div class="row g-3">
-        <div class="col-md-6">
-          <label class="form-label">Nombre</label>
-          <input type="text" class="form-control" [(ngModel)]="estacionSeleccionada.nombre" />
-        </div>
-        <div class="col-md-6">
-          <label class="form-label">País</label>
-          <input type="text" class="form-control" [(ngModel)]="estacionSeleccionada.pais" />
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Km de pistas</label>
-          <input type="number" class="form-control" [(ngModel)]="estacionSeleccionada.kmPistas" />
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Altitud (m)</label>
-          <input type="number" class="form-control" [(ngModel)]="estacionSeleccionada.altitud" />
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Latitud</label>
-          <input type="number" class="form-control" [(ngModel)]="estacionSeleccionada.latitud" />
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Longitud</label>
-          <input type="number" class="form-control" [(ngModel)]="estacionSeleccionada.longitud" />
-        </div>
-        <div class="col-12">
-          <label class="form-label">Descripción</label>
-          <textarea class="form-control" [(ngModel)]="estacionSeleccionada.descripcion" rows="3"></textarea>
-        </div>
-      </div>
-      <div class="d-flex gap-2 mt-3">
-        <button class="btn btn-dark" (click)="guardarEstacion()">Guardar</button>
-        <button class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
-      </div>
-    </div>
-  }
 
-  @if (loading) {
-    <div class="text-center py-5">
-      <div class="spinner-border text-primary" role="status"></div>
-    </div>
-  }
-
-  <div class="card shadow-sm border-0">
+  <div class="bg-white shadow-sm border rounded-0 overflow-hidden">
     <div class="table-responsive">
-      <table class="table table-hover mb-0">
-        <thead class="table-dark">
+      <table class="table align-middle mb-0">
+        <thead class="bg-light text-uppercase" style="font-size: 0.7rem;">
         <tr>
-          <th class="ps-4">Nombre</th>
-          <th>País</th>
-          <th>Km pistas</th>
-          <th>Altitud</th>
-          <th class="text-center">Acciones</th>
+          <th class="px-4 py-3 fw-bold text-muted border-0">Estación</th>
+          <th class="py-3 fw-bold text-muted border-0">País</th>
+          <th class="py-3 fw-bold text-muted border-0 text-center">Extensión</th>
+          <th class="py-3 fw-bold text-muted border-0 text-center">Controles</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="border-top-0">
           @for (estacion of estaciones; track estacion.id) {
-            <tr>
-              <td class="ps-4 fw-bold">{{ estacion.nombre }}</td>
-              <td><span class="badge bg-secondary">{{ estacion.pais }}</span></td>
-              <td>{{ estacion.kmPistas }} km</td>
-              <td>{{ estacion.altitud }} m</td>
-              <td class="text-center">
-                <div class="btn-group">
-                  <button class="btn btn-outline-primary btn-sm" (click)="editarEstacion(estacion)">
-                    <i class="bi bi-pencil"></i>
-                  </button>
-                  <button class="btn btn-outline-danger btn-sm" (click)="eliminarEstacion(estacion.id)">
-                    <i class="bi bi-trash"></i>
-                  </button>
-                </div>
+            <tr class="border-bottom">
+              <td class="px-4 py-4">
+                <div class="fw-bold text-dark">{{ estacion.nombre }}</div>
+                <div class="small text-muted">{{ estacion.altitud }} metros</div>
+              </td>
+              <td><span class="text-secondary text-uppercase fw-medium" style="font-size: 0.8rem;">{{ estacion.pais }}</span></td>
+              <td class="text-center fw-bold">{{ estacion.kmPistas }} km</td>
+              <td class="text-center px-4">
+                <button class="btn btn-link text-dark p-2" (click)="abrirModalEdicion(estacion)">
+                  <i class="bi bi-pencil fs-5"></i>
+                </button>
+                <button class="btn btn-link text-danger p-2" (click)="abrirModalEliminar(estacion.id)">
+                  <i class="bi bi-trash fs-5"></i>
+                </button>
               </td>
             </tr>
           }
         </tbody>
       </table>
+    </div>
+  </div>
+  <!-- Modal edición / nueva estación -->
+  <div class="modal fade" id="modalEstacion" tabindex="-1" #modalEstacion>
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-0 border-0 shadow">
+        <div class="modal-header border-0 px-5 pt-5 pb-0">
+          <h5 class="fw-bold text-uppercase mb-0" style="font-size: 0.9rem;">
+            {{ estacionSeleccionada.id ? 'Editar Estación' : 'Nueva Estación' }}
+          </h5>
+        </div>
+        <div class="modal-body px-5 py-4">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <label class="form-label small text-muted text-uppercase fw-bold">Nombre</label>
+              <input type="text" class="form-control form-control-lg bg-light border-0 rounded-0" [(ngModel)]="estacionSeleccionada.nombre" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small text-muted text-uppercase fw-bold">Ubicación (País)</label>
+              <input type="text" class="form-control form-control-lg bg-light border-0 rounded-0" [(ngModel)]="estacionSeleccionada.pais" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label small text-muted text-uppercase fw-bold">Dominio (KM)</label>
+              <input type="number" class="form-control bg-light border-0 rounded-0" [(ngModel)]="estacionSeleccionada.kmPistas" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label small text-muted text-uppercase fw-bold">Altitud Máxima (m)</label>
+              <input type="number" class="form-control bg-light border-0 rounded-0" [(ngModel)]="estacionSeleccionada.altitud" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label small text-muted text-uppercase fw-bold">Latitud</label>
+              <input type="number" step="0.0001" class="form-control bg-light border-0 rounded-0" [(ngModel)]="estacionSeleccionada.latitud" placeholder="ej: 42.8054" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label small text-muted text-uppercase fw-bold">Longitud</label>
+              <input type="number" step="0.0001" class="form-control bg-light border-0 rounded-0" [(ngModel)]="estacionSeleccionada.longitud" placeholder="ej: 0.5338" />
+            </div>
+            <div class="col-12">
+              <label class="form-label small text-muted text-uppercase fw-bold">Descripción</label>
+              <textarea class="form-control bg-light border-0 rounded-0" [(ngModel)]="estacionSeleccionada.descripcion" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 px-5 pb-5 pt-0 d-flex gap-2">
+          <button class="btn btn-dark rounded-0 px-5 text-uppercase fw-bold" (click)="guardarEstacion()">Guardar</button>
+          <button class="btn btn-light rounded-0 px-4 text-uppercase fw-bold text-muted" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal confirmar eliminar estación -->
+  <div class="modal fade" id="modalEliminarEstacion" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-0 border-0 shadow">
+        <div class="modal-body p-5 text-center">
+          <i class="bi bi-trash text-danger" style="font-size: 2.5rem;"></i>
+          <h5 class="fw-bold text-uppercase mt-3 mb-2" style="font-size: 0.9rem;">¿Eliminar estación?</h5>
+          <p class="text-muted small mb-4">Esta acción no se puede deshacer.</p>
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-light rounded-0 px-4 text-uppercase fw-bold small" data-bs-dismiss="modal">Cancelar</button>
+            <button class="btn btn-danger rounded-0 px-4 text-uppercase fw-bold small" (click)="confirmarEliminar()">Eliminar</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

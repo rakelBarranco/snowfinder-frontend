@@ -1,52 +1,58 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-  <a class="navbar-brand fw-bold" routerLink="/home">
-    ❄️ SnowFinder
-  </a>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm px-4 py-3"
+     style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0, 119, 182, 0.1);">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-light tracking-widest text-uppercase" routerLink="/home" style="letter-spacing: 2px; color: #023e8a;">
+      <span class="fw-bold">Snow</span>Finder
+    </a>
 
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navMenu">
-    <ul class="navbar-nav me-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/estaciones" routerLinkActive="active">Estaciones</a>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav ms-auto">
-      @if (isLoggedIn()) {
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-5">
         <li class="nav-item">
-        <a class="nav-link" routerLink="/favoritos" routerLinkActive="active">⭐ Favoritos</a>
-      </li>
-        <li class="nav-item d-flex align-items-center me-3">
-          <span class="text-white">👤 {{ getNombre() }}</span>
+          <a class="nav-link fw-medium px-3 text-secondary" routerLink="/home" routerLinkActive="text-primary fw-bold">Inicio</a>
         </li>
         <li class="nav-item">
-          <button class="btn btn-outline-light btn-sm" (click)="logout()">
-            Cerrar sesión
-          </button>
+          <a class="nav-link fw-medium px-3 text-secondary" routerLink="/estaciones" routerLinkActive="text-primary fw-bold">Estaciones</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/perfil" routerLinkActive="active">Mi perfil</a>asasa
-        </li>
-        @if (isAdmin()) {
+      </ul>
+
+      <ul class="navbar-nav ms-auto align-items-center">
+        @if (isLoggedIn()) {
           <li class="nav-item">
-            <a class="nav-link" routerLink="/admin" routerLinkActive="active">🛠️ Admin</a>
+            <a class="nav-link text-primary fw-medium px-3 text-uppercase" style="font-size: 0.75rem; letter-spacing: 1px;" routerLink="/favoritos">Favoritos</a>
+          </li>
+
+          <li class="nav-item ms-lg-3">
+            <div class="d-flex align-items-center bg-light rounded-pill ps-3 pe-1 py-1 border">
+              <a routerLink="/perfil" class="text-decoration-none d-flex align-items-center">
+                <span class="small fw-semibold text-dark me-3 text-uppercase" style="font-size: 0.7rem;">👤 {{ getNombre() }}</span>
+              </a>
+
+              <div class="vr me-2" style="height: 15px; background-color: #ccc;"></div>
+
+              @if (isAdmin()) {
+                <a routerLink="/admin" class="btn btn-outline-dark btn-sm rounded-pill px-3 text-uppercase fw-bold me-1" style="font-size: 0.65rem;">Panel</a>
+                <div class="vr me-2" style="height: 15px; background-color: #ccc;"></div>
+              }
+
+              <button class="btn btn-dark btn-sm rounded-pill px-3 text-uppercase fw-bold" style="font-size: 0.65rem;" (click)="logout()">
+                Salir
+              </button>
+            </div>
+          </li>
+        } @else {
+          <li class="nav-item">
+            <a class="nav-link px-3 text-dark fw-medium text-uppercase" style="font-size: 0.75rem;" routerLink="/login">Identificarse</a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-primary rounded-0 px-4 shadow-sm text-uppercase fw-bold" routerLink="/registro"
+               style="background-color: #0077b6; border: none; font-size: 0.75rem;">Crear Cuenta</a>
           </li>
         }
-
-      } @else {
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/registro" routerLinkActive="active">Registro</a>
-        </li>
-      }
-    </ul>
+      </ul>
+    </div>
   </div>
 </nav>

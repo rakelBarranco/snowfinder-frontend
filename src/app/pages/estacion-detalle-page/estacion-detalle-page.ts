@@ -8,13 +8,15 @@ import {AuthService} from '../../services/auth-service';
 import {FavoritoService} from '../../services/favorito-service';
 import {OpinionService} from '../../services/opinion-service';
 import {FormsModule} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 
 
 @Component({
   selector: 'app-estacion-detalle-page',
   imports: [
-    FormsModule
+    FormsModule,
+    DatePipe
   ],
   templateUrl: './estacion-detalle-page.html',
   styleUrl: './estacion-detalle-page.css',
@@ -36,7 +38,6 @@ export default class EstacionDetallePage implements OnInit {
   loading = true;
   private mapaInicializado = false;
 
-  // Formulario opinión
   nuevaPuntuacion = 5;
   nuevoComentario = '';
 
@@ -58,6 +59,7 @@ export default class EstacionDetallePage implements OnInit {
         if (this.authService.isLoggedIn()) {
           this.checkFavorito();
         }
+        setTimeout(() => this.initMapa(), 0);
       },
       error: err => {
         console.error(err);
@@ -110,18 +112,12 @@ export default class EstacionDetallePage implements OnInit {
     return this.authService.isLoggedIn();
   }
 
-  ngAfterViewChecked() {
-    if (this.estacion && !this.mapaInicializado) {
-      const contenedor = document.getElementById('mapa');
-      if (contenedor) {
-        this.mapaInicializado = true;
-        this.initMapa();
-      }
-    }
-  }
 
   initMapa() {
-    if (!this.estacion) return;
+    if (!this.estacion || this.mapaInicializado) return;
+    const contenedor = document.getElementById('mapa');
+    if (!contenedor) return;
+    this.mapaInicializado = true;
     const mapa = L.map('mapa').setView(
       [this.estacion.latitud, this.estacion.longitud], 12
     );

@@ -1,3 +1,34 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.min.css';
 @import 'leaflet/dist/leaflet.css';
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc; /* Un blanco azulado muy suave */
+  color: #1e293b; /* Gris pizarra oscuro en lugar de negro puro */
+}
+
+/* Espaciado entre letras para títulos (estética nórdica) */
+.tracking-widest {
+  letter-spacing: 0.15em;
+}
+
+/* Efecto de elevación suave para las tarjetas */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 30px rgba(0, 119, 182, 0.08) !important;
+}
+
+/* Botones con estilo más fino */
+.btn-primary {
+  background-color: #0077b6;
+  border: none;
+  font-weight: 600;
+  padding: 10px 24px;
+}
+
+/* Clases auxiliares para el diseño */
+.fs-xs { font-size: 0.75rem; }

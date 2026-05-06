@@ -1,0 +1,53 @@
+<div class="min-vh-100 d-flex flex-column align-items-center justify-content-center text-center px-4"
+     style="background: linear-gradient(160deg, #012a4a 0%, #0077b6 60%, #48cae4 100%);">
+
+  <!-- Montañas decorativas SVG -->
+  <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 600px; opacity: 0.15; margin-bottom: -40px;">
+    <polygon points="100,200 250,60 400,200" fill="white"/>
+    <polygon points="300,200 480,30 660,200" fill="white"/>
+    <polygon points="500,200 650,90 800,200" fill="white"/>
+  </svg>
+
+  <!-- 404 -->
+  <h1 style="font-size: 8rem; font-weight: 900; color: white; letter-spacing: -4px; line-height: 1; text-shadow: 0 4px 30px rgba(0,0,0,0.2);">
+    4<span style="color: #48cae4;">0</span>4
+  </h1>
+
+  <!-- Mensaje -->
+  <p class="text-uppercase fw-bold mt-2 mb-2"
+     style="letter-spacing: 6px; font-size: 0.85rem; color: #ade8f4;">
+    Ruta no encontrada
+  </p>
+  <p class="fw-light mb-5" style="color: rgba(255,255,255,0.7); max-width: 380px; line-height: 1.8;">
+    Parece que te has perdido en la montaña. Esta página no existe o ha sido movida.
+  </p>
+
+  <!-- Botón -->
+  <a routerLink="/home"
+     class="btn btn-light rounded-0 px-5 py-3 text-uppercase fw-bold"
+     style="font-size: 0.8rem; letter-spacing: 2px; color: #012a4a;">
+    Volver al inicio
+  </a>
+
+  <!-- Copos de nieve -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden;">
+    @for (copo of copos; track copo.id) {
+      <div style="position: absolute; color: white; opacity: 0.4; animation: caer linear infinite;"
+           [style.left]="copo.left"
+           [style.top]="copo.top"
+           [style.font-size]="copo.size"
+           [style.animation-duration]="copo.duration"
+           [style.animation-delay]="copo.delay">
+        ❄
+      </div>
+    }
+  </div>
+
+</div>
+
+<style>
+  @keyframes caer {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 0.4; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+</style>

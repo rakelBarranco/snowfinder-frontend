@@ -22,4 +22,8 @@ export class OpinionService {
   deleteOpinion(opinionId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${opinionId}`);
   }
+
+  getMisOpiniones(): Observable<Opinion[]> {
+    return this.http.get<Opinion[]>(`${this.apiUrl}/mis-opiniones`);
+  }
 }

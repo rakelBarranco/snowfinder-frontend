@@ -50,4 +50,16 @@ export class AuthService {
   getMe(): Observable<any> {
     return this.http.get(`${this.apiUrl}/me`);
   }
+
+  actualizarNombre(nombre: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/nombre`, { nombre });
+  }
+
+  cambiarPassword(passwordActual: string, passwordNueva: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/password`, { passwordActual, passwordNueva });
+  }
+
+  eliminarCuenta(): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/cuenta`);
+  }
 }
