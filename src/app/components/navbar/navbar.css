@@ -1,3 +1,43 @@
+/* =============================================
+   NAVBAR — SnowFinder
+   ============================================= */
+
+/* Fondo y blur — no disponible en Bootstrap */
+.navbar-root {
+  background-color: rgba(10, 15, 30, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--snow-border);
+}
+
+/* Marca */
+.navbar-brand-snow {
+  letter-spacing: 0.25rem;
+  color: var(--snow-white);
+  font-size: 1rem;
+}
+
+.navbar-brand-snow span {
+  color: var(--snow-blue);
+}
+
+/* Icono toggler */
+.navbar-toggler-snow {
+  color: var(--snow-muted);
+}
+
+/* Links de navegación */
+.nav-link-snow {
+  font-size: 0.85rem;
+  letter-spacing: 0.1rem;
+  color: var(--snow-muted);
+  transition: color 0.2s ease;
+}
+
+.nav-link-snow:hover {
+  color: var(--snow-white);
+}
+
+/* Enlace activo */
 .active-link {
   color: var(--snow-white) !important;
 }
@@ -9,4 +49,41 @@
   height: 2px;
   background-color: var(--snow-blue);
   margin-top: 2px;
+}
+
+/* Bloque de usuario autenticado */
+.navbar-user {
+  border: 1px solid var(--snow-border);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.navbar-user-name {
+  font-size: 0.85rem;
+  letter-spacing: 0.0625rem;
+  color: var(--snow-white);
+}
+
+.navbar-user-name i {
+  color: var(--snow-blue);
+}
+
+/* Separadores verticales */
+.navbar-divider {
+  width: 1px;
+  height: 14px;
+  background-color: var(--snow-border);
+}
+
+/* Link de admin */
+.navbar-admin-link {
+  font-size: 0.8rem;
+  letter-spacing: 0.0625rem;
+  color: var(--snow-blue);
+}
+
+/* Botón de logout */
+.navbar-logout {
+  font-size: 0.8rem;
+  letter-spacing: 0.0625rem;
+  color: var(--snow-muted);
 }

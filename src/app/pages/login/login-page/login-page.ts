@@ -5,10 +5,7 @@ import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
-  imports: [
-    RouterLink,
-    FormsModule
-  ],
+  imports: [RouterLink, FormsModule],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
 })
@@ -21,8 +18,27 @@ export default class LoginPage {
   password = '';
   error = '';
   loading = false;
+  mostrarPassword = false;
+
+  errores = { email: '', password: '' };
+
+  private validar(): boolean {
+    this.errores = { email: '', password: '' };
+
+    if (!this.email.trim())
+      this.errores.email = 'El email es obligatorio';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email))
+      this.errores.email = 'Introduce un email válido';
+
+    if (!this.password)
+      this.errores.password = 'La contraseña es obligatoria';
+
+    return !this.errores.email && !this.errores.password;
+  }
 
   login() {
+    if (!this.validar()) return;
+
     this.loading = true;
     this.error = '';
 
@@ -31,11 +47,10 @@ export default class LoginPage {
         this.authService.guardarToken(data.token, data.rol, data.nombre);
         this.router.navigate(['/home']);
       },
-      error: err => {
+      error: () => {
         this.error = 'Email o contraseña incorrectos';
         this.loading = false;
       }
     });
   }
-
 }

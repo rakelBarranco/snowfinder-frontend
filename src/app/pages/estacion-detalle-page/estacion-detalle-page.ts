@@ -30,9 +30,11 @@ export default class EstacionDetallePage implements OnInit {
   esFavorito = false;
   loading = true;
   private mapaInicializado = false;
+  imagenSeleccionada: string | null = null;
 
   nuevaPuntuacion = 5;
   nuevoComentario = '';
+  errorComentario = '';
 
   ngOnInit() {
     this.getEstacionById();
@@ -69,11 +71,24 @@ export default class EstacionDetallePage implements OnInit {
   }
 
   enviarOpinion() {
+    this.errorComentario = '';
+
+    if (!this.nuevoComentario.trim()) {
+      this.errorComentario = 'Escribe un comentario antes de publicar';
+      return;
+    }
+    if (this.nuevoComentario.trim().length < 10) {
+      this.errorComentario = 'El comentario debe tener al menos 10 caracteres';
+      return;
+    }
+
     if (!this.estacion) return;
+
     this.opinionService.addOpinion(this.estacion.id, this.nuevaPuntuacion, this.nuevoComentario).subscribe({
       next: () => {
         this.nuevoComentario = '';
         this.nuevaPuntuacion = 5;
+        this.errorComentario = '';
         this.cargarOpiniones(this.estacion!.id);
       },
       error: err => console.error(err)

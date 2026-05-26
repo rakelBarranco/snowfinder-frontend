@@ -1,3 +1,7 @@
+/* =============================================
+   LOGIN PAGE — SnowFinder
+   ============================================= */
+
 .auth-page {
   min-height: 100vh;
   background-image:
@@ -10,11 +14,18 @@
 .auth-container {
   width: 100%;
   max-width: 440px;
-  padding: 3rem;
+  padding: 2rem;
   background-color: var(--snow-card);
   border: 1px solid var(--snow-border);
 }
 
+@media (min-width: 576px) {
+  .auth-container {
+    padding: 3rem;
+  }
+}
+
+/* --- Logo --- */
 .auth-logo {
   font-size: 1.8rem;
   font-weight: 800;
@@ -22,6 +33,11 @@
   color: var(--snow-white);
 }
 
+.auth-logo-accent {
+  color: var(--snow-blue);
+}
+
+/* --- Labels --- */
 .auth-label {
   font-size: 0.7rem;
   font-weight: 700;
@@ -30,10 +46,46 @@
   color: var(--snow-muted);
 }
 
+/* --- Error --- */
 .auth-error {
-  background-color: rgba(220, 53, 69, 0.1);
-  border: 1px solid rgba(220, 53, 69, 0.3);
-  color: #ff6b6b;
+  background-color: var(--snow-danger-dim);
+  border: 1px solid rgba(224, 85, 85, 0.3);
+  color: var(--snow-danger);
   padding: 12px 16px;
   font-size: 0.85rem;
 }
+
+/* --- Footer --- */
+.auth-footer-text {
+  color: var(--snow-muted);
+  font-size: 0.85rem;
+}
+
+.auth-footer-link {
+  color: var(--snow-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer-link:hover {
+  color: var(--snow-accent);
+}
+
+.auth-toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--snow-muted);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.auth-toggle-password:hover {
+  color: var(--snow-white);
+}
+

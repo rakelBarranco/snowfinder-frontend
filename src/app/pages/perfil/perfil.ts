@@ -26,15 +26,15 @@ export default class Perfil implements OnInit {
   loading = true;
   opinionAEliminar: number | null = null;
 
-  // Editar nombre
   editandoNombre = false;
   nuevoNombre = '';
+  errorNombre = '';
 
-  // Cambiar contraseña
   editandoPassword = false;
   passwordActual = '';
   passwordNueva = '';
   passwordConfirm = '';
+  erroresPassword = { actual: '', nueva: '', confirm: '' };
 
   ngOnInit() {
     this.authService.getMe().subscribe({
@@ -81,29 +81,52 @@ export default class Perfil implements OnInit {
   }
 
   guardarNombre() {
-    if (!this.nuevoNombre.trim()) return;
+    this.errorNombre = '';
+    if (!this.nuevoNombre.trim()) {
+      this.errorNombre = 'El nombre no puede estar vacío';
+      return;
+    }
     this.authService.actualizarNombre(this.nuevoNombre).subscribe({
       next: () => {
         this.usuario.nombre = this.nuevoNombre;
         localStorage.setItem('nombre', this.nuevoNombre);
         this.editandoNombre = false;
+        this.nuevoNombre = '';
         this.notificationService.exito('Nombre actualizado correctamente');
       },
       error: () => this.notificationService.error('Error al actualizar el nombre')
     });
   }
 
+  private validarPassword(): boolean {
+    this.erroresPassword = { actual: '', nueva: '', confirm: '' };
+
+    if (!this.passwordActual)
+      this.erroresPassword.actual = 'Introduce tu contraseña actual';
+
+    if (!this.passwordNueva)
+      this.erroresPassword.nueva = 'Introduce la nueva contraseña';
+    else if (this.passwordNueva.length < 6)
+      this.erroresPassword.nueva = 'Mínimo 6 caracteres';
+
+    if (!this.passwordConfirm)
+      this.erroresPassword.confirm = 'Confirma la nueva contraseña';
+    else if (this.passwordNueva !== this.passwordConfirm)
+      this.erroresPassword.confirm = 'Las contraseñas no coinciden';
+
+    return !this.erroresPassword.actual && !this.erroresPassword.nueva && !this.erroresPassword.confirm;
+  }
+
   guardarPassword() {
-    if (this.passwordNueva !== this.passwordConfirm) {
-      this.notificationService.error('Las contraseñas no coinciden');
-      return;
-    }
+    if (!this.validarPassword()) return;
+
     this.authService.cambiarPassword(this.passwordActual, this.passwordNueva).subscribe({
       next: () => {
         this.editandoPassword = false;
         this.passwordActual = '';
         this.passwordNueva = '';
         this.passwordConfirm = '';
+        this.erroresPassword = { actual: '', nueva: '', confirm: '' };
         this.notificationService.exito('Contraseña actualizada correctamente');
       },
       error: () => this.notificationService.error('La contraseña actual no es correcta')

@@ -1,20 +1,99 @@
+/* =============================================
+   FOOTER — SnowFinder
+   ============================================= */
+
+.footer-root {
+  background-color: var(--snow-dark);
+  border-top: 1px solid var(--snow-border);
+}
+
+/* --- Marca --- */
+.footer-brand {
+  letter-spacing: 0.25rem;
+  font-size: 1rem;
+  color: var(--snow-white);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .footer-brand {
+    font-size: 1.1rem;
+  }
+}
+
+.footer-brand span {
+  color: var(--snow-blue);
+}
+
+/* --- Descripción --- */
+.footer-desc {
+  color: var(--snow-muted);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+@media (min-width: 768px) {
+  .footer-desc {
+    font-size: 0.875rem;
+  }
+}
+
+/* --- Links de navegación --- */
 .footer-links a {
   color: var(--snow-muted);
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.775rem;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.0625rem;
   text-transform: uppercase;
   transition: color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .footer-links a {
+    font-size: 0.8rem;
+  }
 }
 
 .footer-links a:hover {
   color: var(--snow-blue);
 }
 
+/* --- Stack tecnológico --- */
 .footer-tech-item {
   color: var(--snow-muted);
-  font-size: 0.82rem;
+  font-size: 0.775rem;
   display: flex;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  .footer-tech-item {
+    font-size: 0.82rem;
+  }
+}
+
+.footer-tech-item i {
+  color: var(--snow-blue);
+}
+
+/* --- Línea inferior --- */
+.footer-bottom {
+  border-top: 1px solid var(--snow-border);
+}
+
+.footer-copy {
+  color: var(--snow-muted);
+  font-size: 0.75rem;
+}
+
+@media (min-width: 576px) {
+  .footer-copy {
+    font-size: 0.8rem;
+  }
+}
+
+.footer-copy span {
+  color: var(--snow-white);
 }

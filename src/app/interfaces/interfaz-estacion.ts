@@ -7,6 +7,7 @@ export interface Estacion {
   kmPistas: number;
   descripcion: string;
   altitud: number;
+  imagenes: { id: number; url: string }[];
 }
 
 export interface Meteo {

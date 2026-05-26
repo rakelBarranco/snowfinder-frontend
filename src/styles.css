@@ -11,16 +11,18 @@
    VARIABLES GLOBALES
    ============================================= */
 :root {
-  --snow-black:     #0a0f1e;
-  --snow-dark:      #111827;
-  --snow-card:      #161d2f;
-  --snow-border:    rgba(255, 255, 255, 0.08);
-  --snow-blue:      #4fc3f7;
-  --snow-blue-dim:  #1e88e5;
-  --snow-white:     #f0f4ff;
-  --snow-muted:     #8892a4;
-  --snow-text:      #cbd5e1;
-  --snow-accent:    #7dd3fc;
+  --snow-black:      #0a0f1e;
+  --snow-dark:       #111827;
+  --snow-card:       #161d2f;
+  --snow-border:     rgba(255, 255, 255, 0.08);
+  --snow-blue:       #4fc3f7;
+  --snow-blue-dim:   #1e88e5;
+  --snow-white:      #f0f4ff;
+  --snow-muted:      #8892a4;
+  --snow-text:       #cbd5e1;
+  --snow-accent:     #7dd3fc;
+  --snow-danger:     #e05555;
+  --snow-danger-dim: rgba(224, 85, 85, 0.15);
 }
 
 /* =============================================
@@ -35,6 +37,7 @@ body {
   background-color: var(--snow-black);
   color: var(--snow-text);
   -webkit-font-smoothing: antialiased;
+  padding-top: 4rem;
 }
 
 /* =============================================
@@ -54,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tracking-widest { letter-spacing: 0.2em; }
-.fs-xs { font-size: 0.72rem; }
+.fs-xs            { font-size: 0.72rem; }
 
 /* =============================================
    CARDS
@@ -126,14 +129,32 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-snow-ghost:hover {
   color: var(--snow-white);
-  border-color: rgba(255,255,255,0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-danger-snow {
+  background-color: var(--snow-danger);
+  color: white;
+  border: none;
+  border-radius: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-danger-snow:hover {
+  background-color: var(--snow-danger);
+  filter: brightness(1.1);
+  color: white;
 }
 
 /* =============================================
    FORMULARIOS
    ============================================= */
 .snow-input {
-  background-color: rgba(255,255,255,0.04);
+  background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--snow-border);
   border-radius: 0;
   color: var(--snow-white);
@@ -143,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .snow-input:focus {
-  background-color: rgba(255,255,255,0.06);
+  background-color: rgba(255, 255, 255, 0.06);
   border-color: var(--snow-blue);
   color: var(--snow-white);
   box-shadow: none;
@@ -155,7 +176,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .snow-select {
-  background-color: rgba(255,255,255,0.04);
+  background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--snow-border);
   border-radius: 0;
   color: var(--snow-white);
@@ -164,7 +185,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .snow-select:focus {
-  background-color: rgba(255,255,255,0.06);
+  background-color: rgba(255, 255, 255, 0.06);
   border-color: var(--snow-blue);
   color: var(--snow-white);
   box-shadow: none;
@@ -233,7 +254,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .snow-table tbody tr:hover {
-  background-color: rgba(255,255,255,0.03);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .snow-table tbody td {
@@ -243,13 +264,41 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
-   MODALES
+   MODALES — estilos compartidos
    ============================================= */
-.snow-modal .modal-content {
-  background-color: var(--snow-card);
-  border: 1px solid var(--snow-border);
-  border-radius: 0;
-  color: var(--snow-text);
+.snow-modal .modal-content,
+.modal-content {
+  background-color: var(--snow-card) !important;
+  border: 1px solid var(--snow-border) !important;
+  border-radius: 0 !important;
+  color: var(--snow-text) !important;
+}
+
+.admin-modal-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--snow-white);
+}
+
+.admin-modal-desc {
+  color: var(--snow-muted);
+  font-size: 0.85rem;
+}
+
+.admin-icon-danger {
+  font-size: 2.5rem;
+  color: var(--snow-danger);
+  display: block;
+}
+
+/* =============================================
+   SPINNER — compartido
+   ============================================= */
+.admin-spinner {
+  color: var(--snow-blue);
+  width: 3rem;
+  height: 3rem;
 }
 
 /* =============================================
@@ -271,4 +320,24 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--snow-muted);
+}
+
+/* =============================================
+   VALIDACIÓN DE FORMULARIOS
+   ============================================= */
+.input-error {
+  border-color: var(--snow-danger) !important;
+}
+
+.input-error:focus {
+  border-color: var(--snow-danger) !important;
+  box-shadow: none !important;
+}
+
+.form-error-msg {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--snow-danger);
+  margin-top: 0.4rem;
 }

@@ -3,19 +3,19 @@
   <div class="hero-overlay"></div>
   <div class="container position-relative py-5">
     <div class="row min-vh-75 align-items-center py-5">
-      <div class="col-lg-8">
+      <div class="col-12 col-lg-8">
         <div class="label mb-4">Plataforma de Esquí Profesional</div>
         <h1 class="hero-title mb-4">
-          SNOW<span style="color: var(--snow-blue);">FINDER</span>
+          SNOW<span class="hero-title-accent">FINDER</span>
         </h1>
         <p class="hero-subtitle mb-5">
           Datos en tiempo real de las mejores estaciones de esquí europeas. Meteorología, mapas y opiniones de la comunidad.
         </p>
         <div class="d-flex gap-3 flex-wrap">
-          <a routerLink="/estaciones" class="btn btn-snow px-5 py-3">
+          <a routerLink="/estaciones" class="btn btn-snow px-4 px-md-5 py-3">
             Explorar Estaciones
           </a>
-          <a routerLink="/registro" class="btn btn-snow-ghost px-5 py-3">
+          <a routerLink="/registro" class="btn btn-snow-ghost px-4 px-md-5 py-3">
             Crear Cuenta
           </a>
         </div>
@@ -26,7 +26,7 @@
   <!-- Indicador scroll -->
   <div class="position-absolute bottom-0 start-50 translate-middle-x pb-4 text-center">
     <div class="scroll-indicator">
-      <i class="bi bi-chevron-down" style="color: var(--snow-muted); font-size: 1.2rem;"></i>
+      <i class="bi bi-chevron-down hero-scroll-icon"></i>
     </div>
   </div>
 </section>
@@ -36,44 +36,44 @@
   <div class="container">
     <div class="text-center mb-5">
       <div class="label mb-3">¿Qué es SnowFinder?</div>
-      <h2 class="fw-light" style="font-size: 2.5rem;">Todo lo que necesitas para esquiar</h2>
+      <h2 class="fw-light features-title">Todo lo que necesitas para esquiar</h2>
     </div>
 
     <div class="row g-4">
-      <div class="col-md-4">
-        <div class="snow-card p-5 h-100 text-center feature-card">
+      <div class="col-12 col-md-4">
+        <div class="snow-card p-4 p-md-5 h-100 text-center feature-card">
           <div class="feature-icon mb-4">
             <i class="bi bi-map"></i>
           </div>
           <div class="label mb-3">01. Catálogo</div>
-          <h5 class="fw-light mb-3" style="color: var(--snow-white);">Estaciones</h5>
-          <p style="color: var(--snow-muted); font-size: 0.875rem; line-height: 1.8;">
+          <h5 class="fw-light mb-3 feature-card-title">Estaciones</h5>
+          <p class="feature-card-desc">
             Acceso técnico a la base de datos de los dominios esquiables más importantes del continente europeo.
           </p>
         </div>
       </div>
 
-      <div class="col-md-4">
-        <div class="snow-card p-5 h-100 text-center feature-card">
+      <div class="col-12 col-md-4">
+        <div class="snow-card p-4 p-md-5 h-100 text-center feature-card">
           <div class="feature-icon mb-4">
             <i class="bi bi-cloud-snow"></i>
           </div>
           <div class="label mb-3">02. Tiempo Real</div>
-          <h5 class="fw-light mb-3" style="color: var(--snow-white);">Meteorología</h5>
-          <p style="color: var(--snow-muted); font-size: 0.875rem; line-height: 1.8;">
+          <h5 class="fw-light mb-3 feature-card-title">Meteorología</h5>
+          <p class="feature-card-desc">
             Sincronización de datos atmosféricos y estado del manto nivoso actualizado en tiempo real.
           </p>
         </div>
       </div>
 
-      <div class="col-md-4">
-        <div class="snow-card p-5 h-100 text-center feature-card">
+      <div class="col-12 col-md-4">
+        <div class="snow-card p-4 p-md-5 h-100 text-center feature-card">
           <div class="feature-icon mb-4">
             <i class="bi bi-people"></i>
           </div>
           <div class="label mb-3">03. Comunidad</div>
-          <h5 class="fw-light mb-3" style="color: var(--snow-white);">Opiniones</h5>
-          <p style="color: var(--snow-muted); font-size: 0.875rem; line-height: 1.8;">
+          <h5 class="fw-light mb-3 feature-card-title">Opiniones</h5>
+          <p class="feature-card-desc">
             Valoraciones y experiencias compartidas por usuarios verificados de la plataforma.
           </p>
         </div>
@@ -85,13 +85,13 @@
 <!-- CTA -->
 <section class="cta-section">
   <div class="container">
-    <div class="cta-box text-center p-5">
+    <div class="cta-box text-center p-4 p-md-5">
       <div class="label mb-4">Únete a la comunidad</div>
-      <h2 class="fw-light mb-4" style="font-size: 2rem;">¿Listo para encontrar tu montaña?</h2>
-      <p class="mb-5" style="color: var(--snow-muted); max-width: 500px; margin: 0 auto 2rem;">
+      <h2 class="fw-light mb-4 cta-title">¿Listo para encontrar tu montaña?</h2>
+      <p class="cta-desc mb-4 mb-md-5">
         Crea tu cuenta gratis y accede a todas las estaciones, guarda tus favoritas y comparte tu experiencia.
       </p>
-      <a routerLink="/registro" class="btn btn-snow px-5 py-3">
+      <a routerLink="/registro" class="btn btn-snow px-4 px-md-5 py-3">
         Empezar Ahora
       </a>
     </div>

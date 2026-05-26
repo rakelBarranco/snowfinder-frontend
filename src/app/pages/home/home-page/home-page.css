@@ -1,4 +1,8 @@
-/* Hero */
+/* =============================================
+   HOME PAGE — SnowFinder
+   ============================================= */
+
+/* --- Hero --- */
 .hero-section {
   min-height: 100vh;
   background-image:
@@ -9,6 +13,13 @@
   background-attachment: fixed;
   display: flex;
   align-items: center;
+}
+
+/* background-attachment: fixed no funciona bien en móvil */
+@media (max-width: 767px) {
+  .hero-section {
+    background-attachment: scroll;
+  }
 }
 
 .hero-overlay {
@@ -25,6 +36,10 @@
   line-height: 1;
 }
 
+.hero-title-accent {
+  color: var(--snow-blue);
+}
+
 .hero-subtitle {
   font-size: 1rem;
   color: var(--snow-muted);
@@ -32,21 +47,30 @@
   line-height: 1.8;
 }
 
+.hero-scroll-icon {
+  color: var(--snow-muted);
+  font-size: 1.2rem;
+}
+
 .min-vh-75 {
   min-height: 75vh;
 }
 
-/* Scroll indicator */
+/* --- Scroll indicator --- */
 .scroll-indicator {
   animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+  50%       { transform: translateY(8px); }
 }
 
-/* Feature cards */
+/* --- Features --- */
+.features-title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
 .feature-card {
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
@@ -64,7 +88,18 @@
   background-color: rgba(79, 195, 247, 0.05);
 }
 
-/* CTA */
+.feature-card-title {
+  color: var(--snow-white);
+}
+
+.feature-card-desc {
+  color: var(--snow-muted);
+  font-size: 0.875rem;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* --- CTA --- */
 .cta-section {
   padding: 5rem 0;
 }
@@ -72,4 +107,15 @@
 .cta-box {
   border: 1px solid var(--snow-border);
   background: linear-gradient(135deg, var(--snow-card) 0%, rgba(79,195,247,0.05) 100%);
+}
+
+.cta-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.cta-desc {
+  color: var(--snow-muted);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }

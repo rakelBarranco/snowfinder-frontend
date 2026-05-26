@@ -1,81 +1,66 @@
-<nav class="navbar navbar-expand-lg sticky-top px-4 py-3"
-     style="background-color: rgba(10, 15, 30, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--snow-border);">
+<nav class="navbar navbar-expand-lg fixed-top navbar-root px-3 px-lg-4 py-3">
   <div class="container-fluid">
 
-    <!-- Logo -->
-    <a class="navbar-brand text-uppercase fw-bold" routerLink="/home"
-       style="letter-spacing: 4px; color: var(--snow-white); font-size: 1rem;">
-      SNOW<span style="color: var(--snow-blue);">FINDER</span>
+    <!-- Marca -->
+    <a class="navbar-brand text-uppercase fw-bold navbar-brand-snow" routerLink="/home">
+      SNOW<span>FINDER</span>
     </a>
 
     <!-- Toggler móvil -->
-    <button class="navbar-toggler border-0" type="button"
+    <button class="navbar-toggler border-0 navbar-toggler-snow" type="button"
             data-bs-toggle="collapse" data-bs-target="#navMenu"
-            style="color: var(--snow-muted);">
+            aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
       <i class="bi bi-list fs-4"></i>
     </button>
 
     <div class="collapse navbar-collapse" id="navMenu">
 
       <!-- Links principales -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-5 gap-1">
+      <ul class="navbar-nav me-auto ms-lg-5 gap-1 mt-3 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-uppercase fw-bold px-3"
-             style="font-size: 0.72rem; letter-spacing: 2px; color: var(--snow-muted);"
-             routerLink="/home"
-             routerLinkActive="active-link">
+          <a class="nav-link nav-link-snow text-uppercase fw-bold px-3"
+             routerLink="/home" routerLinkActive="active-link">
             Inicio
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-uppercase fw-bold px-3"
-             style="font-size: 0.72rem; letter-spacing: 2px; color: var(--snow-muted);"
-             routerLink="/estaciones"
-             routerLinkActive="active-link">
+          <a class="nav-link nav-link-snow text-uppercase fw-bold px-3"
+             routerLink="/estaciones" routerLinkActive="active-link">
             Estaciones
           </a>
         </li>
       </ul>
 
-      <!-- Links usuario -->
-      <ul class="navbar-nav ms-auto align-items-center gap-2">
+      <!-- Links de usuario -->
+      <ul class="navbar-nav align-items-start align-items-lg-center gap-2 mt-2 mt-lg-0">
+
         @if (isLoggedIn()) {
 
           <li class="nav-item">
-            <a class="nav-link text-uppercase fw-bold px-3"
-               style="font-size: 0.72rem; letter-spacing: 2px; color: var(--snow-muted);"
-               routerLink="/favoritos"
-               routerLinkActive="active-link">
+            <a class="nav-link nav-link-snow text-uppercase fw-bold px-3"
+               routerLink="/favoritos" routerLinkActive="active-link">
               Favoritos
             </a>
           </li>
 
           <li class="nav-item">
-            <div class="d-flex align-items-center gap-2 px-3 py-2"
-                 style="border: 1px solid var(--snow-border); background-color: rgba(255,255,255,0.03);">
-
+            <div class="d-flex align-items-center gap-2 px-3 py-2 navbar-user">
               <a routerLink="/perfil" class="text-decoration-none">
-                <span class="text-uppercase fw-bold"
-                      style="font-size: 0.7rem; letter-spacing: 1px; color: var(--snow-white);">
-                  <i class="bi bi-person me-1" style="color: var(--snow-blue);"></i>
-                  {{ getNombre() }}
+                <span class="text-uppercase fw-bold navbar-user-name">
+                  <i class="bi bi-person me-1"></i>{{ getNombre() }}
                 </span>
               </a>
 
               @if (isAdmin()) {
-                <div style="width: 1px; height: 14px; background-color: var(--snow-border);"></div>
-                <a routerLink="/admin"
-                   class="text-uppercase fw-bold text-decoration-none"
-                   style="font-size: 0.65rem; letter-spacing: 1px; color: var(--snow-blue);">
+                <div class="navbar-divider"></div>
+                <a routerLink="/admin" class="text-uppercase fw-bold text-decoration-none navbar-admin-link">
                   Panel
                 </a>
               }
 
-              <div style="width: 1px; height: 14px; background-color: var(--snow-border);"></div>
+              <div class="navbar-divider"></div>
 
-              <button class="btn p-0 text-uppercase fw-bold"
-                      style="font-size: 0.65rem; letter-spacing: 1px; color: var(--snow-muted);"
-                      (click)="logout()">
+              <button class="btn p-0 text-uppercase fw-bold navbar-logout" (click)="logout()">
                 Salir
               </button>
             </div>
@@ -84,9 +69,7 @@
         } @else {
 
           <li class="nav-item">
-            <a class="nav-link text-uppercase fw-bold px-3"
-               style="font-size: 0.72rem; letter-spacing: 2px; color: var(--snow-muted);"
-               routerLink="/login">
+            <a class="nav-link nav-link-snow text-uppercase fw-bold px-3" routerLink="/login">
               Identificarse
             </a>
           </li>
@@ -97,7 +80,9 @@
           </li>
 
         }
+
       </ul>
+
     </div>
   </div>
 </nav>

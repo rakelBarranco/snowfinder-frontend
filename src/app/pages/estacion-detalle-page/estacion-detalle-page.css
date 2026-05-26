@@ -1,4 +1,31 @@
-/* Meta info hero */
+/* =============================================
+   ESTACIÓN DETALLE — SnowFinder
+   ============================================= */
+
+/* --- Hero --- */
+.detalle-hero {
+  min-height: 60vh;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--snow-dark);
+  display: flex;
+  align-items: flex-end;
+}
+
+.detalle-hero-content {
+  padding-bottom: 3rem;
+  padding-top: 8rem;
+}
+
+.detalle-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.detalle-icon {
+  color: var(--snow-blue);
+}
+
+/* --- Meta info --- */
 .detalle-meta-item {
   font-size: 0.8rem;
   font-weight: 600;
@@ -7,7 +34,12 @@
   color: var(--snow-muted);
 }
 
-/* Descripción */
+/* --- Favorito --- */
+.favorito-btn {
+  transition: all 0.2s ease;
+}
+
+/* --- Descripción --- */
 .detalle-descripcion {
   font-size: 1.05rem;
   color: var(--snow-muted);
@@ -15,7 +47,80 @@
   max-width: 800px;
 }
 
-/* Meteorología */
+/* --- Galería --- */
+.detalle-galeria-item {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--snow-border);
+}
+
+.detalle-galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.detalle-galeria-item:hover img {
+  transform: scale(1.08);
+}
+
+.detalle-galeria-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 30, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.detalle-galeria-item:hover .detalle-galeria-overlay {
+  opacity: 1;
+}
+
+/* --- Lightbox --- */
+.detalle-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.detalle-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border: 1px solid var(--snow-border);
+}
+
+.detalle-lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: 1px solid var(--snow-border);
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 0;
+}
+
+/* --- Meteorología --- */
 .meteo-card {
   background-color: var(--snow-card);
   border: 1px solid var(--snow-border);
@@ -47,11 +152,11 @@
   color: var(--snow-muted);
 }
 
-/* Previsión */
+/* --- Previsión --- */
 .prevision-card {
   background-color: var(--snow-card);
   border: 1px solid var(--snow-border);
-  min-width: 130px;
+  min-width: 120px;
   transition: border-color 0.2s ease;
 }
 
@@ -78,13 +183,40 @@
   color: var(--snow-muted);
 }
 
-/* Mapa */
+.prevision-nieve-si {
+  color: var(--snow-blue);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.prevision-nieve-no {
+  color: var(--snow-muted);
+  font-size: 0.7rem;
+}
+
+/* --- Mapa --- */
 .detalle-mapa-wrapper {
   border: 1px solid var(--snow-border);
   overflow: hidden;
 }
 
-/* Opiniones */
+.detalle-mapa {
+  height: 320px;
+}
+
+@media (min-width: 768px) {
+  .detalle-mapa {
+    height: 420px;
+  }
+}
+
+/* --- Opiniones --- */
+.detalle-empty-icon {
+  font-size: 2rem;
+  color: var(--snow-muted);
+  display: block;
+}
+
 .opinion-item {
   border-bottom: 1px solid var(--snow-border);
 }
@@ -114,9 +246,4 @@
   background-color: var(--snow-card);
   border: 1px solid var(--snow-border);
   margin-top: 2rem;
-}
-
-/* Favorito btn */
-.favorito-btn {
-  transition: all 0.2s ease;
 }

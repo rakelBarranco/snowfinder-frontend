@@ -1,13 +1,14 @@
-<div style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.75rem;">
+<div class="toast-container">
   @for (n of notificationService.notificaciones | async; track n.id) {
-    <div class="d-flex align-items-center gap-3 px-4 py-3 shadow"
-         style="min-width: 300px; border-radius: 0; animation: slideIn 0.3s ease;"
-         [style.background]="n.tipo === 'exito' ? '#012a4a' : n.tipo === 'error' ? '#c62828' : '#0077b6'">
+    <div class="d-flex align-items-center gap-3 px-4 py-3 toast-item"
+         [class.toast-item-exito]="n.tipo === 'exito'"
+         [class.toast-item-error]="n.tipo === 'error'"
+         [class.toast-item-info]="n.tipo === 'info'">
       <i class="bi text-white fs-5"
          [class.bi-check-circle]="n.tipo === 'exito'"
          [class.bi-x-circle]="n.tipo === 'error'"
          [class.bi-info-circle]="n.tipo === 'info'"></i>
-      <span class="text-white small fw-bold text-uppercase" style="letter-spacing: 0.5px;">{{ n.mensaje }}</span>
+      <span class="text-white small fw-bold text-uppercase" style="letter-spacing: 0.03125rem;">{{ n.mensaje }}</span>
       <button class="btn btn-link text-white ms-auto p-0" (click)="notificationService.eliminar(n.id)">
         <i class="bi bi-x fs-5"></i>
       </button>

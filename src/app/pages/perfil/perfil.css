@@ -1,3 +1,12 @@
+/* =============================================
+   PERFIL — SnowFinder
+   ============================================= */
+
+/* --- Hero --- */
+.perfil-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
 .perfil-meta {
   font-size: 0.8rem;
   font-weight: 600;
@@ -5,7 +14,70 @@
   color: var(--snow-muted);
 }
 
-/* Opiniones */
+.perfil-icon {
+  color: var(--snow-blue);
+}
+
+.perfil-vr {
+  background-color: var(--snow-border);
+  height: 16px;
+}
+
+.perfil-badge-admin {
+  border-color: rgba(224, 85, 85, 0.4) !important;
+  color: var(--snow-danger) !important;
+}
+
+/* --- Empty state --- */
+.perfil-empty-icon {
+  font-size: 2rem;
+  color: var(--snow-muted);
+  display: block;
+}
+
+/* --- Cards favoritos --- */
+.perfil-card-body {
+  border-bottom: 1px solid var(--snow-border);
+}
+
+.perfil-card-nombre {
+  font-size: 1.1rem;
+  color: var(--snow-white);
+}
+
+.perfil-card-desc {
+  color: var(--snow-muted);
+  font-size: 0.8rem;
+  height: 3.4em;
+  overflow: hidden;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.perfil-stat-left {
+  border-right: 1px solid var(--snow-border);
+}
+
+.perfil-stat-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--snow-blue);
+  margin-bottom: 0.25rem;
+}
+
+.perfil-stat-value {
+  color: var(--snow-white);
+}
+
+.perfil-stat-unit {
+  color: var(--snow-muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+/* --- Opiniones --- */
 .perfil-opinion {
   border-bottom: 1px solid var(--snow-border);
 }
@@ -30,14 +102,22 @@
   margin-bottom: 0;
 }
 
-/* Ajustes */
+.perfil-btn-eliminar-opinion {
+  color: var(--snow-muted);
+}
+
+/* --- Ajustes --- */
 .perfil-ajustes {
   border: 1px solid var(--snow-border);
 }
 
 .perfil-ajuste-item {
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   border-bottom: 1px solid var(--snow-border);
+}
+
+.perfil-ajuste-item--last {
+  border-bottom: none;
 }
 
 .perfil-ajuste-label {
@@ -49,7 +129,37 @@
   margin-bottom: 0.25rem;
 }
 
+.perfil-ajuste-label--danger {
+  color: var(--snow-danger);
+}
+
 .perfil-ajuste-valor {
   font-weight: 600;
   color: var(--snow-white);
+}
+
+.perfil-ajuste-desc {
+  font-size: 0.8rem;
+  color: var(--snow-muted);
+}
+
+.perfil-ajuste-btn {
+  font-size: 0.7rem;
+}
+
+/* --- Botón eliminar cuenta --- */
+.perfil-btn-danger {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--snow-danger);
+  border: 1px solid rgba(224, 85, 85, 0.3);
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.perfil-btn-danger:hover {
+  background-color: var(--snow-danger-dim);
+  color: var(--snow-danger);
 }

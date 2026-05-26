@@ -1,16 +1,18 @@
-<footer class="mt-5" style="background-color: var(--snow-dark); border-top: 1px solid var(--snow-border);">
-  <div class="container py-5">
-    <div class="row g-5">
+<footer class="footer-root mt-5">
+  <div class="container px-3 px-sm-4 px-lg-5 py-5">
 
-      <!-- Brand -->
-      <div class="col-lg-5">
-        <div class="text-uppercase fw-bold mb-4" style="letter-spacing: 4px; font-size: 1.1rem; color: var(--snow-white);">
-          SNOW<span style="color: var(--snow-blue);">FINDER</span>
+    <div class="row g-4 g-lg-5">
+
+      <!-- Marca + descripción -->
+      <div class="col-12 col-md-6 col-lg-5">
+        <div class="footer-brand mb-3">
+          SNOW<span>FINDER</span>
         </div>
-        <p style="color: var(--snow-muted); font-size: 0.875rem; line-height: 1.8; max-width: 340px;">
-          Plataforma de datos para el esquí profesional. Consulta estaciones, meteorología en tiempo real y opiniones de la comunidad.
+        <p class="footer-desc">
+          Plataforma de datos para el esquí profesional. Consulta estaciones,
+          meteorología en tiempo real y opiniones de la comunidad.
         </p>
-        <div class="d-flex gap-3 mt-4">
+        <div class="d-flex gap-2 mt-4 flex-wrap">
           <div class="snow-badge">Angular</div>
           <div class="snow-badge">Spring Boot</div>
           <div class="snow-badge">Open-Meteo</div>
@@ -18,34 +20,34 @@
       </div>
 
       <!-- Navegación -->
-      <div class="col-lg-3">
-        <h6 class="label mb-4">Navegación</h6>
-        <ul class="list-unstyled footer-links">
-          <li class="mb-3"><a routerLink="/home">Inicio</a></li>
-          <li class="mb-3"><a routerLink="/estaciones">Estaciones</a></li>
-          <li class="mb-3"><a routerLink="/favoritos">Favoritos</a></li>
-          <li class="mb-3"><a routerLink="/perfil">Mi Perfil</a></li>
+      <div class="col-6 col-md-3 col-lg-3">
+        <h6 class="label mb-3 mb-lg-4">Navegación</h6>
+        <ul class="list-unstyled footer-links mb-0">
+          <li class="mb-2 mb-lg-3"><a routerLink="/home">Inicio</a></li>
+          <li class="mb-2 mb-lg-3"><a routerLink="/estaciones">Estaciones</a></li>
+          <li class="mb-2 mb-lg-3"><a routerLink="/favoritos">Favoritos</a></li>
+          <li class="mb-2 mb-lg-3"><a routerLink="/perfil">Mi Perfil</a></li>
         </ul>
       </div>
 
-      <!-- Tecnología -->
-      <div class="col-lg-4">
-        <h6 class="label mb-4">Stack Tecnológico</h6>
+      <!-- Stack tecnológico -->
+      <div class="col-6 col-md-3 col-lg-4">
+        <h6 class="label mb-3 mb-lg-4">Stack Tecnológico</h6>
         <div class="d-flex flex-column gap-2">
           <div class="footer-tech-item">
-            <i class="bi bi-braces me-2" style="color: var(--snow-blue);"></i>
+            <i class="bi bi-braces me-2 flex-shrink-0"></i>
             <span>Angular 18 + Bootstrap 5</span>
           </div>
           <div class="footer-tech-item">
-            <i class="bi bi-server me-2" style="color: var(--snow-blue);"></i>
+            <i class="bi bi-server me-2 flex-shrink-0"></i>
             <span>Spring Boot + MySQL</span>
           </div>
           <div class="footer-tech-item">
-            <i class="bi bi-cloud me-2" style="color: var(--snow-blue);"></i>
+            <i class="bi bi-cloud me-2 flex-shrink-0"></i>
             <span>Open-Meteo API</span>
           </div>
           <div class="footer-tech-item">
-            <i class="bi bi-geo-alt me-2" style="color: var(--snow-blue);"></i>
+            <i class="bi bi-geo-alt me-2 flex-shrink-0"></i>
             <span>Leaflet Maps</span>
           </div>
         </div>
@@ -53,14 +55,11 @@
 
     </div>
 
-    <div class="mt-5 pt-4 d-flex flex-wrap justify-content-between align-items-center"
-         style="border-top: 1px solid var(--snow-border);">
-      <p class="mb-0" style="color: var(--snow-muted); font-size: 0.8rem;">
-        © 2025 SnowFinder — Trabajo de Fin de Grado
-      </p>
-      <p class="mb-0" style="color: var(--snow-muted); font-size: 0.8rem;">
-        Meteorología por <span style="color: var(--snow-white);">Open-Meteo</span>
-      </p>
+    <!-- Footer bottom -->
+    <div class="footer-bottom mt-4 mt-lg-5 pt-4 d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 text-center text-sm-start">
+      <p class="footer-copy mb-0">© 2025 SnowFinder — Trabajo de Fin de Grado</p>
+      <p class="footer-copy mb-0">Meteorología por <span>Open-Meteo</span></p>
     </div>
+
   </div>
 </footer>
