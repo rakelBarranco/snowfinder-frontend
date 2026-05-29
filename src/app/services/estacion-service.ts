@@ -2,13 +2,14 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Estacion} from '../interfaces/interfaz-estacion';
+import {environment} from '../../enviroments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EstacionService {
-  private apiUrl = 'http://localhost:8080/api/estaciones';
+  private apiUrl = `${environment.apiUrl}/api/estaciones`;
   private http = inject(HttpClient);
 
   getEstaciones(): Observable<Estacion[]> {

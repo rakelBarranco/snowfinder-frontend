@@ -2,13 +2,14 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {LoginResponse, RegisterResponse} from '../interfaces/interfaz-auth';
+import {environment} from '../../enviroments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8080/api/auth';
+  private apiUrl = `${environment.apiUrl}/api/auth`;
   private http = inject(HttpClient);
 
   login(email: string, password: string): Observable<LoginResponse> {
@@ -66,6 +67,6 @@ export class AuthService {
   subirFotoPerfil(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post(`http://localhost:8080/api/files/upload/perfil`, formData);
+    return this.http.post(`${environment.apiUrl}/api/files/upload/perfil`, formData);
   }
 }

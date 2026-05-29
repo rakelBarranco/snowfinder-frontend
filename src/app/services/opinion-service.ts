@@ -2,13 +2,14 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Opinion} from '../interfaces/interfaz-estacion';
+import {environment} from '../../enviroments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class OpinionService {
-  private apiUrl = 'http://localhost:8080/api/opiniones';
+  private apiUrl = `${environment.apiUrl}/api/opiniones`;
   private http = inject(HttpClient);
 
   getOpinionesByEstacion(estacionId: number): Observable<Opinion[]> {
