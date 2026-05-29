@@ -161,15 +161,29 @@
         <div class="mb-4">
           @for (opinion of opiniones; track opinion.id) {
             <div class="opinion-item py-4">
-              <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
-                <span class="opinion-autor">{{ opinion.usuario.nombre }}</span>
-                <div class="opinion-puntuacion">
-                  @for (i of [1,2,3,4,5]; track i) {
-                    <i class="bi" [class.bi-star-fill]="i <= opinion.puntuacion" [class.bi-star]="i > opinion.puntuacion"></i>
+              <div class="d-flex gap-3">
+
+                <div class="opinion-avatar flex-shrink-0">
+                  @if (opinion.usuario.fotoPerfil) {
+                    <img [src]="opinion.usuario.fotoPerfil" [alt]="opinion.usuario.nombre" class="opinion-avatar-img" />
+                  } @else {
+                    <span class="opinion-avatar-iniciales">{{ opinion.usuario.nombre[0].toUpperCase() }}</span>
                   }
                 </div>
+
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                    <span class="opinion-autor">{{ opinion.usuario.nombre }}</span>
+                    <div class="opinion-puntuacion">
+                      @for (i of [1,2,3,4,5]; track i) {
+                        <i class="bi" [class.bi-star-fill]="i <= opinion.puntuacion" [class.bi-star]="i > opinion.puntuacion"></i>
+                      }
+                    </div>
+                  </div>
+                  <p class="opinion-texto">"{{ opinion.comentario }}"</p>
+                </div>
+
               </div>
-              <p class="opinion-texto">"{{ opinion.comentario }}"</p>
             </div>
           }
         </div>

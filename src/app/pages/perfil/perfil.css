@@ -1,8 +1,22 @@
-/* =============================================
-   PERFIL — SnowFinder
-   ============================================= */
-
 /* --- Hero --- */
+.perfil-hero {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: flex-end;
+  background-image:
+    linear-gradient(to bottom, rgba(10,15,30,0.3) 0%, rgba(10,15,30,0.92) 100%),
+    url('/assets/perfil-hero.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.perfil-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10,15,30,0.4) 0%, transparent 100%);
+}
+
 .perfil-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
@@ -10,7 +24,7 @@
 .perfil-meta {
   font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.0625rem;
   color: var(--snow-muted);
 }
 
@@ -28,53 +42,60 @@
   color: var(--snow-danger) !important;
 }
 
+/* --- Avatar --- */
+.perfil-avatar-wrapper {
+  flex-shrink: 0;
+}
+
+.perfil-avatar {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--snow-border);
+  background-color: var(--snow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perfil-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.perfil-avatar-iniciales {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--snow-blue);
+  letter-spacing: 0.1rem;
+}
+
+.perfil-avatar-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 30, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: var(--snow-white);
+  font-size: 1.2rem;
+}
+
+.perfil-avatar:hover .perfil-avatar-overlay {
+  opacity: 1;
+}
+
 /* --- Empty state --- */
 .perfil-empty-icon {
   font-size: 2rem;
   color: var(--snow-muted);
   display: block;
-}
-
-/* --- Cards favoritos --- */
-.perfil-card-body {
-  border-bottom: 1px solid var(--snow-border);
-}
-
-.perfil-card-nombre {
-  font-size: 1.1rem;
-  color: var(--snow-white);
-}
-
-.perfil-card-desc {
-  color: var(--snow-muted);
-  font-size: 0.8rem;
-  height: 3.4em;
-  overflow: hidden;
-  line-height: 1.7;
-  margin-bottom: 0;
-}
-
-.perfil-stat-left {
-  border-right: 1px solid var(--snow-border);
-}
-
-.perfil-stat-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--snow-blue);
-  margin-bottom: 0.25rem;
-}
-
-.perfil-stat-value {
-  color: var(--snow-white);
-}
-
-.perfil-stat-unit {
-  color: var(--snow-muted);
-  font-size: 0.8rem;
-  font-weight: 400;
 }
 
 /* --- Opiniones --- */
@@ -85,7 +106,7 @@
 .perfil-opinion-estacion {
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: var(--snow-white);
 }
@@ -123,7 +144,7 @@
 .perfil-ajuste-label {
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: var(--snow-muted);
   margin-bottom: 0.25rem;
@@ -151,7 +172,7 @@
 .perfil-btn-danger {
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: var(--snow-danger);
   border: 1px solid rgba(224, 85, 85, 0.3);

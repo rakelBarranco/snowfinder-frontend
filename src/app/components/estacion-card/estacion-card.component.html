@@ -1,0 +1,50 @@
+<div class="snow-card h-100 d-flex flex-column estacion-card">
+
+  @if (estacion.imagenes && estacion.imagenes.length > 0) {
+    <div class="estacion-card-img">
+      <img [src]="estacion.imagenes[0].url" [alt]="estacion.nombre" />
+    </div>
+  }
+
+  <div class="p-4 estacion-card-body">
+    <div class="d-flex justify-content-between align-items-start mb-3 gap-2">
+      <h4 class="fw-bold mb-0 estacion-card-nombre">{{ estacion.nombre }}</h4>
+      <span class="snow-badge flex-shrink-0">{{ estacion.pais }}</span>
+    </div>
+    <p class="estacion-card-desc">{{ estacion.descripcion }}</p>
+  </div>
+
+  <div class="px-4 pb-3 flex-grow-1 py-2">
+    <div class="row g-0">
+      <div class="col-6 pe-3 estacion-stat-left">
+        <div class="estacion-stat-label">Dominio</div>
+        <div class="fw-bold estacion-stat-value">
+          {{ estacion.kmPistas }} <span class="estacion-stat-unit">KM</span>
+        </div>
+      </div>
+      <div class="col-6 ps-3">
+        <div class="estacion-stat-label">Cota Máx</div>
+        <div class="fw-bold estacion-stat-value">
+          {{ estacion.altitud }} <span class="estacion-stat-unit">M</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-4 pt-2 d-flex gap-2">
+    <a [routerLink]="['/estaciones', estacion.id]"
+       class="btn btn-snow-outline py-2"
+       [class.flex-grow-1]="mostrarEliminar"
+       [class.w-100]="!mostrarEliminar">
+      Consultar Ficha
+    </a>
+    @if (mostrarEliminar) {
+      <button class="btn btn-snow-ghost py-2 px-3"
+              (click)="eliminar.emit(estacion.id)"
+              title="Eliminar favorito">
+        <i class="bi bi-heart-fill favorito-btn-eliminar"></i>
+      </button>
+    }
+  </div>
+
+</div>

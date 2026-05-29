@@ -1,7 +1,3 @@
-/* =============================================
-   FAVORITOS PAGE — SnowFinder
-   ============================================= */
-
 /* --- Título hero --- */
 .favoritos-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
@@ -14,73 +10,14 @@
   display: block;
 }
 
-/* --- Card imagen --- */
-.favorito-card {
-  cursor: pointer;
-}
-
-.favorito-card-img {
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
-  border-bottom: 1px solid var(--snow-border);
-}
-
-.favorito-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.favorito-card:hover .favorito-card-img img {
-  transform: scale(1.05);
-}
-
-/* --- Card body --- */
-.favorito-card-body {
-  border-bottom: 1px solid var(--snow-border);
-}
-
-.favorito-card-nombre {
-  font-size: 1.1rem;
-  color: var(--snow-white);
-}
-
-.favorito-card-desc {
-  color: var(--snow-muted);
-  font-size: 0.8rem;
-  line-height: 1.7;
-  height: 3.4em;
-  overflow: hidden;
-  margin-bottom: 0;
-}
-
-/* --- Stats --- */
-.favorito-stat-left {
-  border-right: 1px solid var(--snow-border);
-}
-
-.favorito-stat-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--snow-blue);
-  margin-bottom: 0.25rem;
-}
-
-.favorito-stat-value {
-  color: var(--snow-white);
-}
-
-.favorito-stat-unit {
-  color: var(--snow-muted);
-  font-weight: 400;
-  font-size: 0.8rem;
-}
-
-/* --- Botón eliminar favorito --- */
-.favorito-btn-eliminar {
-  color: #8f1414;
+.favoritos-hero {
+  background-image:
+    linear-gradient(to bottom, rgba(10,15,30,0.5) 0%, rgba(10,15,30,0.9) 100%),
+    url('/assets/favorito-img.webp');
+  background-size: cover;
+  background-position: center;
+  min-height: 35vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 0 3rem;
 }

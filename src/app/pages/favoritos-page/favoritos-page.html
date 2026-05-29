@@ -1,4 +1,4 @@
-<section class="snow-hero">
+<section class="favoritos-hero">
   <div class="container">
     <div class="label mb-3">Selección Personal</div>
     <h1 class="fw-light mb-0 favoritos-title">Mis Favoritos</h1>
@@ -25,49 +25,10 @@
   <div class="row g-4">
     @for (estacion of estaciones; track estacion.id) {
       <div class="col-12 col-sm-6 col-lg-4">
-        <div class="snow-card h-100 d-flex flex-column favorito-card">
-
-          @if (estacion.imagenes && estacion.imagenes.length > 0) {
-            <div class="favorito-card-img">
-              <img [src]="estacion.imagenes[0].url" [alt]="estacion.nombre" />
-            </div>
-          }
-
-          <div class="p-4 favorito-card-body">
-            <div class="d-flex justify-content-between align-items-start mb-3 gap-2">
-              <h4 class="fw-bold mb-0 favorito-card-nombre">{{ estacion.nombre }}</h4>
-              <span class="snow-badge flex-shrink-0">{{ estacion.pais }}</span>
-            </div>
-            <p class="favorito-card-desc">{{ estacion.descripcion }}</p>
-          </div>
-
-          <div class="px-4 pb-3 flex-grow-1">
-            <div class="row g-0">
-              <div class="col-6 pe-3 favorito-stat-left">
-                <div class="favorito-stat-label">Dominio</div>
-                <div class="fw-bold favorito-stat-value">
-                  {{ estacion.kmPistas }} <span class="favorito-stat-unit">KM</span>
-                </div>
-              </div>
-              <div class="col-6 ps-3">
-                <div class="favorito-stat-label">Cota Máx</div>
-                <div class="fw-bold favorito-stat-value">
-                  {{ estacion.altitud }} <span class="favorito-stat-unit">M</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-4 pt-2 d-flex gap-2">
-            <a [routerLink]="['/estaciones', estacion.id]" class="btn btn-snow-outline flex-grow-1 py-2">
-              Consultar Ficha
-            </a>
-            <button class="btn btn-snow-ghost py-2 px-3" (click)="eliminarFavorito(estacion.id)" title="Eliminar favorito">
-              <i class="bi bi-heart-fill favorito-btn-eliminar"></i>
-            </button>
-          </div>
-
-        </div>
+        <app-estacion-card
+          [estacion]="estacion"
+          [mostrarEliminar]="true"
+          (eliminar)="eliminarFavorito($event)" />
       </div>
     }
   </div>

@@ -1,0 +1,164 @@
+.admin-table-wrapper {
+  border: 1px solid var(--snow-border);
+  overflow: hidden;
+}
+
+.snow-table {
+  background-color: var(--snow-card) !important;
+}
+
+.snow-table thead tr {
+  background-color: var(--snow-dark) !important;
+}
+
+.snow-table tbody tr {
+  background-color: var(--snow-card) !important;
+}
+
+.snow-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.snow-table td,
+.snow-table th {
+  background-color: transparent !important;
+}
+
+.admin-estacion-nombre {
+  color: var(--snow-white);
+}
+
+.admin-estacion-alt {
+  color: var(--snow-muted);
+  font-size: 0.78rem;
+}
+
+.admin-text {
+  color: var(--snow-text);
+}
+
+.admin-img-count {
+  font-size: 0.7rem;
+}
+
+.admin-action-btn {
+  background: transparent;
+  border: 1px solid var(--snow-border);
+  color: var(--snow-muted);
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0;
+}
+
+.admin-action-btn:hover {
+  border-color: var(--snow-blue);
+  color: var(--snow-blue);
+}
+
+.admin-action-btn.danger:hover {
+  border-color: var(--snow-danger);
+  color: var(--snow-danger);
+}
+
+.admin-icon-blue {
+  color: var(--snow-blue);
+}
+
+.admin-file-picker {
+  cursor: pointer;
+}
+
+.admin-file-label {
+  color: var(--snow-muted);
+  font-size: 0.85rem;
+}
+
+.admin-empty {
+  border: 1px solid var(--snow-border);
+}
+
+.admin-imagen-item {
+  position: relative;
+  border: 1px solid var(--snow-border);
+  overflow: hidden;
+}
+
+.admin-imagen-preview {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-imagen-delete {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(10, 15, 30, 0.8);
+  border: 1px solid var(--snow-border);
+  color: var(--snow-danger);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+  border-radius: 0;
+  transition: background 0.2s ease;
+}
+
+.admin-imagen-delete:hover {
+  background: rgba(224, 85, 85, 0.3);
+}
+
+.admin-modal-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--snow-white);
+  letter-spacing: 0.0625rem;
+}
+
+.admin-modal-desc {
+  color: var(--snow-muted);
+  font-size: 0.85rem;
+}
+
+.admin-icon-danger {
+  font-size: 2.5rem;
+  color: var(--snow-danger);
+  display: block;
+}
+
+.admin-spinner {
+  color: var(--snow-blue);
+  width: 3rem;
+  height: 3rem;
+}
+
+.btn-danger-snow {
+  background-color: #7f1d1d;
+  color: white;
+  border-radius: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.btn-danger-snow:hover {
+  background-color: #991b1b;
+  color: white;
+}
+
+.input-error {
+  border-color: var(--snow-danger) !important;
+}
+
+.form-error-msg {
+  color: var(--snow-danger);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}

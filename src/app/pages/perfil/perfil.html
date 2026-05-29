@@ -9,18 +9,41 @@
 
   @if (usuario) {
 
-    <section class="snow-hero">
-      <div class="container">
-        <div class="label mb-3">Mi Cuenta</div>
-        <h1 class="fw-light mb-4 perfil-title">{{ usuario.nombre }}</h1>
-        <div class="d-flex align-items-center gap-3 flex-wrap">
-          <div class="perfil-meta">
-            <i class="bi bi-envelope me-2 perfil-icon"></i>{{ usuario.email }}
+    <section class="perfil-hero">
+      <div class="perfil-hero-overlay"></div>
+      <div class="container position-relative py-5">
+        <div class="d-flex align-items-end gap-4 flex-wrap">
+
+          <!-- Avatar -->
+          <div class="perfil-avatar-wrapper">
+            <input type="file" #fotoInput class="d-none" accept="image/*" (change)="onFotoSeleccionada($event)" />
+            <div class="perfil-avatar" (click)="fotoInput.click()">
+              @if (usuario.fotoPerfil) {
+                <img [src]="usuario.fotoPerfil" [alt]="usuario.nombre" class="perfil-avatar-img" />
+              } @else {
+                <span class="perfil-avatar-iniciales">{{ getIniciales() }}</span>
+              }
+              <div class="perfil-avatar-overlay">
+                <i class="bi bi-camera"></i>
+              </div>
+            </div>
           </div>
-          <div class="vr perfil-vr"></div>
-          <span class="snow-badge" [class.perfil-badge-admin]="usuario.rol === 'ADMIN'">
+
+          <!-- Info -->
+          <div class="pb-2">
+            <div class="label mb-2">Mi Cuenta</div>
+            <h1 class="fw-light mb-3 perfil-title">{{ usuario.nombre }}</h1>
+            <div class="d-flex align-items-center gap-3 flex-wrap">
+              <div class="perfil-meta">
+                <i class="bi bi-envelope me-2 perfil-icon"></i>{{ usuario.email }}
+              </div>
+              <div class="vr perfil-vr"></div>
+              <span class="snow-badge" [class.perfil-badge-admin]="usuario.rol === 'ADMIN'">
             {{ usuario.rol === 'ADMIN' ? 'Administrador' : 'Usuario' }}
           </span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -40,30 +63,7 @@
       <div class="row g-4 mb-5">
         @for (estacion of favoritos; track estacion.id) {
           <div class="col-12 col-sm-6 col-lg-4">
-            <div class="snow-card h-100 d-flex flex-column">
-              <div class="p-4 perfil-card-body">
-                <div class="d-flex justify-content-between align-items-start mb-3 gap-2">
-                  <h4 class="fw-bold mb-0 perfil-card-nombre">{{ estacion.nombre }}</h4>
-                  <span class="snow-badge flex-shrink-0">{{ estacion.pais }}</span>
-                </div>
-                <p class="perfil-card-desc">{{ estacion.descripcion }}</p>
-              </div>
-              <div class="px-4 pb-3 flex-grow-1">
-                <div class="row g-0">
-                  <div class="col-6 pe-3 perfil-stat-left">
-                    <div class="perfil-stat-label">Dominio</div>
-                    <div class="fw-bold perfil-stat-value">{{ estacion.kmPistas }} <span class="perfil-stat-unit">KM</span></div>
-                  </div>
-                  <div class="col-6 ps-3">
-                    <div class="perfil-stat-label">Cota Máx</div>
-                    <div class="fw-bold perfil-stat-value">{{ estacion.altitud }} <span class="perfil-stat-unit">M</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 pt-2">
-                <a [routerLink]="['/estaciones', estacion.id]" class="btn btn-snow-outline w-100 py-2">Consultar Ficha</a>
-              </div>
-            </div>
+            <app-estacion-card [estacion]="estacion" />
           </div>
         }
       </div>
@@ -82,7 +82,7 @@
       @for (opinion of opiniones; track opinion.id) {
         <div class="perfil-opinion py-4 d-flex justify-content-between align-items-start gap-3">
           <div>
-            <div class="perfil-opinion-estacion mb-1">{{ opinion.estacion?.nombre }}</div>
+            <div class="perfil-opinion-estacion mb-1">{{ opinion.estacion.nombre }}</div>
             <div class="perfil-opinion-puntuacion mb-2">
               @for (i of [1,2,3,4,5]; track i) {
                 <i class="bi" [class.bi-star-fill]="i <= opinion.puntuacion" [class.bi-star]="i > opinion.puntuacion"></i>

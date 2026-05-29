@@ -1,0 +1,267 @@
+<div class="d-flex justify-content-end mb-4">
+  <button class="btn btn-snow px-4 py-3" (click)="abrirModalNueva()">
+    <i class="bi bi-plus-lg me-2"></i>Nueva Estación
+  </button>
+</div>
+@if (loading) {
+  <div class="text-center py-5">
+    <div class="spinner-border admin-spinner" role="status"></div>
+    <p class="mt-3 label">Cargando estaciones...</p>
+  </div>
+}
+
+@if (!loading) {
+
+  <!-- Tabla desktop -->
+  <div class="admin-table-wrapper d-none d-md-block">
+    <table class="table snow-table mb-0">
+      <thead>
+      <tr>
+        <th>Estación</th>
+        <th>País</th>
+        <th class="text-center">Extensión</th>
+        <th class="text-center">Imágenes</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (estacion of estaciones; track estacion.id) {
+          <tr>
+            <td>
+              <div class="fw-bold admin-estacion-nombre">{{ estacion.nombre }}</div>
+              <div class="admin-estacion-alt">{{ estacion.altitud }} m altitud</div>
+            </td>
+            <td><span class="snow-badge">{{ estacion.pais }}</span></td>
+            <td class="text-center admin-text">{{ estacion.kmPistas }} km</td>
+            <td class="text-center">
+              <button class="admin-action-btn" (click)="abrirModalImagenes(estacion)" title="Gestionar imágenes">
+                <i class="bi bi-images"></i>
+                <span class="ms-1 admin-img-count">{{ estacion.imagenes.length || 0 }}</span>
+              </button>
+            </td>
+            <td class="text-center">
+              <div class="d-flex justify-content-center gap-2">
+                <button class="admin-action-btn" (click)="abrirModalEdicion(estacion)" title="Editar">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="admin-action-btn danger" (click)="abrirModalEliminar(estacion.id)" title="Eliminar">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cards móvil -->
+  <div class="d-md-none d-flex flex-column gap-3">
+    @for (estacion of estaciones; track estacion.id) {
+      <div class="snow-card p-3">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <div>
+            <div class="fw-bold admin-estacion-nombre">{{ estacion.nombre }}</div>
+            <div class="admin-estacion-alt">{{ estacion.altitud }} m altitud</div>
+          </div>
+          <span class="snow-badge">{{ estacion.pais }}</span>
+        </div>
+        <div class="admin-text mb-3">{{ estacion.kmPistas }} km de pistas</div>
+        <div class="d-flex gap-2">
+          <button class="admin-action-btn flex-grow-1" (click)="abrirModalImagenes(estacion)">
+            <i class="bi bi-images me-1"></i>{{ estacion.imagenes.length || 0 }} imágenes
+          </button>
+          <button class="admin-action-btn" (click)="abrirModalEdicion(estacion)" title="Editar">
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button class="admin-action-btn danger" (click)="abrirModalEliminar(estacion.id)" title="Eliminar">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+}
+
+<!-- Modal editar / nueva estación -->
+<div class="modal fade" id="modalEstacion" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content rounded-0 border-0">
+      <div class="modal-header border-0 px-4 px-md-5 pt-4 pt-md-5 pb-0">
+        <h5 class="admin-modal-title mb-0">
+          {{ editandoId ? 'Editar Estación' : 'Nueva Estación' }}
+        </h5>
+      </div>
+      <div class="modal-body px-4 px-md-5 py-4">
+        <form [formGroup]="estacionForm">
+          <div class="row g-3 g-md-4">
+
+            <div class="col-12 col-md-6">
+              <div class="label mb-2">Nombre</div>
+              <input type="text" class="snow-input w-100"
+                     [class.input-error]="isInvalid('nombre')"
+                     formControlName="nombre"
+                     placeholder="Nombre de la estación" />
+              @if (isInvalid('nombre')) {
+                <div class="form-error-msg">El nombre es obligatorio</div>
+              }
+            </div>
+
+            <div class="col-12 col-md-6">
+              <div class="label mb-2">País</div>
+              <input type="text" class="snow-input w-100"
+                     [class.input-error]="isInvalid('pais')"
+                     formControlName="pais"
+                     placeholder="País" />
+              @if (isInvalid('pais')) {
+                <div class="form-error-msg">El país es obligatorio</div>
+              }
+            </div>
+
+            <div class="col-6 col-md-3">
+              <div class="label mb-2">Dominio (KM)</div>
+              <input type="number" class="snow-input w-100"
+                     [class.input-error]="isInvalid('kmPistas')"
+                     formControlName="kmPistas" />
+              @if (isInvalid('kmPistas')) {
+                <div class="form-error-msg">Valor mayor que 0</div>
+              }
+            </div>
+
+            <div class="col-6 col-md-3">
+              <div class="label mb-2">Altitud (m)</div>
+              <input type="number" class="snow-input w-100"
+                     [class.input-error]="isInvalid('altitud')"
+                     formControlName="altitud" />
+              @if (isInvalid('altitud')) {
+                <div class="form-error-msg">Valor mayor que 0</div>
+              }
+            </div>
+
+            <div class="col-6 col-md-3">
+              <div class="label mb-2">Latitud</div>
+              <input type="number" step="0.0001" class="snow-input w-100"
+                     [class.input-error]="isInvalid('latitud')"
+                     formControlName="latitud"
+                     placeholder="42.8054" />
+              @if (isInvalid('latitud')) {
+                <div class="form-error-msg">Entre -90 y 90</div>
+              }
+            </div>
+
+            <div class="col-6 col-md-3">
+              <div class="label mb-2">Longitud</div>
+              <input type="number" step="0.0001" class="snow-input w-100"
+                     [class.input-error]="isInvalid('longitud')"
+                     formControlName="longitud"
+                     placeholder="0.5338" />
+              @if (isInvalid('longitud')) {
+                <div class="form-error-msg">Entre -180 y 180</div>
+              }
+            </div>
+
+            <div class="col-12">
+              <div class="label mb-2">Descripción</div>
+              <textarea class="snow-input w-100"
+                        [class.input-error]="isInvalid('descripcion')"
+                        formControlName="descripcion"
+                        rows="3"></textarea>
+              @if (isInvalid('descripcion')) {
+                <div class="form-error-msg">La descripción es obligatoria</div>
+              }
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-0 px-4 px-md-5 pb-4 pb-md-5 pt-0 gap-2">
+        <button class="btn btn-snow px-4 px-md-5 py-2" (click)="guardarEstacion()">Guardar</button>
+        <button class="btn btn-snow-ghost px-4 py-2" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal eliminar estación -->
+<div class="modal fade" id="modalEliminarEstacion" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-0 border-0">
+      <div class="modal-body p-4 p-md-5 text-center">
+        <i class="bi bi-trash admin-icon-danger mb-3"></i>
+        <h5 class="admin-modal-title mt-2 mb-2">¿Eliminar estación?</h5>
+        <p class="admin-modal-desc mb-4">Esta acción no se puede deshacer.</p>
+        <div class="d-flex justify-content-center gap-3">
+          <button class="btn btn-snow-ghost px-4 py-2" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-danger-snow px-4 py-2" (click)="confirmarEliminar()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal imágenes -->
+<div class="modal fade" id="modalImagenes" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content rounded-0 border-0">
+      <div class="modal-header border-0 px-4 px-md-5 pt-4 pt-md-5 pb-0">
+        <h5 class="admin-modal-title mb-0">Imágenes — {{ estacionImagenes?.nombre }}</h5>
+      </div>
+      <div class="modal-body px-4 px-md-5 py-4">
+
+        <div class="label mb-2">Subir desde tu ordenador</div>
+        <div class="d-flex gap-2 mb-4">
+          <input type="file" #fileInput class="d-none" accept="image/*" (change)="onArchivoSeleccionado($event)" />
+          <div class="snow-input flex-grow-1 d-flex align-items-center admin-file-picker" (click)="fileInput.click()">
+            <i class="bi bi-image me-2 admin-icon-blue"></i>
+            <span class="admin-file-label">
+              {{ archivoSeleccionado ? archivoSeleccionado.name : 'Seleccionar imagen...' }}
+            </span>
+          </div>
+          <button class="btn btn-snow px-3 px-md-4" (click)="subirArchivo()" [disabled]="!archivoSeleccionado">
+            <i class="bi bi-upload"></i>
+          </button>
+        </div>
+
+        <div class="label mb-2">O añadir por URL</div>
+        <form [formGroup]="urlForm">
+          <div class="d-flex gap-2 mb-1">
+            <input type="text" class="snow-input flex-grow-1"
+                   [class.input-error]="urlForm.get('url')?.invalid && urlForm.get('url')?.touched"
+                   formControlName="url"
+                   placeholder="https://ejemplo.com/imagen.jpg" />
+            <button class="btn btn-snow px-3 px-md-4" (click)="anadirImagen()">
+              <i class="bi bi-plus-lg"></i>
+            </button>
+          </div>
+          @if (urlForm.get('url')?.invalid && urlForm.get('url')?.touched) {
+            <div class="form-error-msg mb-3">Introduce una URL válida</div>
+          }
+        </form>
+
+        @if (estacionImagenes?.imagenes?.length === 0) {
+          <div class="text-center py-4 admin-empty mt-3">
+            <p class="label mb-0">No hay imágenes todavía</p>
+          </div>
+        }
+
+        <div class="row g-3 mt-1">
+          @for (imagen of estacionImagenes?.imagenes; track imagen.id) {
+            <div class="col-6 col-md-4">
+              <div class="admin-imagen-item">
+                <img [src]="imagen.url" [alt]="estacionImagenes?.nombre" class="admin-imagen-preview" />
+                <button class="admin-imagen-delete" (click)="eliminarImagen(imagen.id)" title="Eliminar">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+
+      </div>
+      <div class="modal-footer border-0 px-4 px-md-5 pb-4 pb-md-5 pt-0">
+        <button class="btn btn-snow-ghost px-4 py-2" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

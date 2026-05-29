@@ -1,8 +1,4 @@
-/* =============================================
-   NAVBAR — SnowFinder
-   ============================================= */
-
-/* Fondo y blur — no disponible en Bootstrap */
+/* Fondo y blur */
 .navbar-root {
   background-color: rgba(10, 15, 30, 0.95);
   backdrop-filter: blur(20px);

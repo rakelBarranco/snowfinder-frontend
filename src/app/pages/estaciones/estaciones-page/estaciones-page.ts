@@ -3,10 +3,11 @@ import {EstacionService} from '../../../services/estacion-service';
 import {Estacion} from '../../../interfaces/interfaz-estacion';
 import {RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {EstacionCardComponent} from '../../../components/estacion-card/estacion-card.component';
 
 @Component({
   selector: 'app-estaciones-page',
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule, EstacionCardComponent],
   templateUrl: './estaciones-page.html',
   styleUrl: './estaciones-page.css',
 })

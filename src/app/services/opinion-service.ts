@@ -26,4 +26,8 @@ export class OpinionService {
   getMisOpiniones(): Observable<Opinion[]> {
     return this.http.get<Opinion[]>(`${this.apiUrl}/mis-opiniones`);
   }
+
+  getTodasOpiniones(): Observable<Opinion[]> {
+    return this.http.get<Opinion[]>(`${this.apiUrl}/todas`);
+  }
 }

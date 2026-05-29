@@ -1,12 +1,19 @@
-/* =============================================
-   ADMIN PAGE — SnowFinder
-   ============================================= */
-
 /* --- Título hero --- */
 .admin-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
+.admin-hero {
+  background-image:
+    linear-gradient(to bottom, rgba(10,15,30,0.5) 0%, rgba(10,15,30,0.9) 100%),
+    url('/assets/admin-hero.jpg');
+  background-size: cover;
+  background-position: bottom;
+  min-height: 35vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 0 3rem;
+}
 /* --- Tabla --- */
 .admin-table-wrapper {
   border: 1px solid var(--snow-border);
@@ -126,4 +133,98 @@
 
 .admin-imagen-delete:hover {
   background: rgba(224, 85, 85, 0.3);
+}
+
+/* --- Pestañas --- */
+.admin-tabs {
+  background-color: var(--snow-dark);
+  border-bottom: 1px solid var(--snow-border);
+}
+
+.admin-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--snow-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-tab:hover {
+  color: var(--snow-white);
+}
+
+.admin-tab-active {
+  color: var(--snow-blue) !important;
+  border-bottom-color: var(--snow-blue);
+}
+
+/* --- Modales --- */
+.modal-content {
+  background-color: var(--snow-card) !important;
+  border: 1px solid var(--snow-border) !important;
+  color: var(--snow-text) !important;
+}
+
+.admin-modal-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--snow-white);
+  letter-spacing: 0.0625rem;
+}
+
+.admin-modal-desc {
+  color: var(--snow-muted);
+  font-size: 0.85rem;
+}
+
+.admin-icon-danger {
+  font-size: 2.5rem;
+  color: var(--snow-danger);
+  display: block;
+}
+
+/* --- Spinner --- */
+.admin-spinner {
+  color: var(--snow-blue);
+  width: 3rem;
+  height: 3rem;
+}
+
+/* --- Botón eliminar --- */
+.btn-danger-snow {
+  background-color: #7f1d1d;
+  color: white;
+  border-radius: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.btn-danger-snow:hover {
+  background-color: #991b1b;
+  color: white;
+}
+
+/* --- Opiniones --- */
+.opinion-puntuacion-admin {
+  color: var(--snow-blue);
+  font-size: 0.75rem;
+}
+
+/* --- Errores de formulario --- */
+.input-error {
+  border-color: var(--snow-danger) !important;
+}
+
+.form-error-msg {
+  color: var(--snow-danger);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
 }

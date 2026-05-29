@@ -1,13 +1,9 @@
-/* =============================================
-   HOME PAGE — SnowFinder
-   ============================================= */
-
 /* --- Hero --- */
 .hero-section {
   min-height: 100vh;
   background-image:
     linear-gradient(to bottom, rgba(10,15,30,0.5) 0%, rgba(10,15,30,0.85) 100%),
-    url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076&auto=format&fit=crop');
+    url('/assets/home-hero.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -15,7 +11,6 @@
   align-items: center;
 }
 
-/* background-attachment: fixed no funciona bien en móvil */
 @media (max-width: 767px) {
   .hero-section {
     background-attachment: scroll;
@@ -118,4 +113,33 @@
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
+/* --- Franja imagen --- */
+.home-franja {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  background-image:
+    url('/assets/home-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media (max-width: 767px) {
+  .home-franja {
+    background-attachment: scroll;
+  }
+}
+
+.home-franja-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 30, 0.6);
+}
+
+.home-franja-title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--snow-white);
 }

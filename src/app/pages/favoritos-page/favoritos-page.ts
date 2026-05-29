@@ -3,10 +3,11 @@ import {FavoritoService} from '../../services/favorito-service';
 import {NotificationService} from '../../services/notification-service';
 import {Estacion} from '../../interfaces/interfaz-estacion';
 import {RouterLink} from '@angular/router';
+import {EstacionCardComponent} from '../../components/estacion-card/estacion-card.component';
 
 @Component({
   selector: 'app-favoritos-page',
-  imports: [RouterLink],
+  imports: [RouterLink, EstacionCardComponent],
   templateUrl: './favoritos-page.html',
   styleUrl: './favoritos-page.css',
 })

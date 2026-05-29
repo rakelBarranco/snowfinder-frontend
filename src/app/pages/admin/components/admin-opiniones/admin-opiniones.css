@@ -1,0 +1,65 @@
+.admin-table-wrapper {
+  border: 1px solid var(--snow-border);
+  overflow: hidden;
+}
+
+.snow-table {
+  background-color: var(--snow-card) !important;
+}
+
+.snow-table thead tr {
+  background-color: var(--snow-dark) !important;
+}
+
+.snow-table tbody tr {
+  background-color: var(--snow-card) !important;
+}
+
+.snow-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.snow-table td,
+.snow-table th {
+  background-color: transparent !important;
+}
+
+.admin-estacion-nombre {
+  color: var(--snow-white);
+}
+
+.admin-text {
+  color: var(--snow-text);
+}
+
+.admin-action-btn {
+  background: transparent;
+  border: 1px solid var(--snow-border);
+  color: var(--snow-muted);
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0;
+}
+
+.admin-action-btn:hover {
+  border-color: var(--snow-blue);
+  color: var(--snow-blue);
+}
+
+.admin-action-btn.danger:hover {
+  border-color: var(--snow-danger);
+  color: var(--snow-danger);
+}
+
+.admin-spinner {
+  color: var(--snow-blue);
+  width: 3rem;
+  height: 3rem;
+}
+
+.opinion-puntuacion-admin {
+  color: var(--snow-blue);
+  font-size: 0.75rem;
+}

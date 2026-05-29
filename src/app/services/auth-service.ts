@@ -62,4 +62,10 @@ export class AuthService {
   eliminarCuenta(): Observable<any> {
     return this.http.delete(`${this.apiUrl}/cuenta`);
   }
+
+  subirFotoPerfil(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post(`http://localhost:8080/api/files/upload/perfil`, formData);
+  }
 }

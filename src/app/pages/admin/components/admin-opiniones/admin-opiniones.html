@@ -1,0 +1,71 @@
+@if (loading) {
+  <div class="text-center py-5">
+    <div class="spinner-border admin-spinner" role="status"></div>
+    <p class="mt-3 label">Cargando opiniones...</p>
+  </div>
+}
+
+@if (!loading) {
+
+  <!-- Tabla desktop -->
+  <div class="admin-table-wrapper d-none d-md-block">
+    <table class="table snow-table mb-0">
+      <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Estación</th>
+        <th class="text-center">Puntuación</th>
+        <th>Comentario</th>
+        <th class="text-center">Eliminar</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (opinion of opiniones; track opinion.id) {
+          <tr>
+            <td>
+              <div class="fw-bold admin-estacion-nombre">{{ opinion.usuario.nombre }}</div>
+            </td>
+            <td>
+              <span class="snow-badge">{{ opinion.estacion.nombre }}</span>
+            </td>
+            <td class="text-center">
+              <div class="opinion-puntuacion-admin">
+                @for (i of [1,2,3,4,5]; track i) {
+                  <i class="bi" [class.bi-star-fill]="i <= opinion.puntuacion" [class.bi-star]="i > opinion.puntuacion"></i>
+                }
+              </div>
+            </td>
+            <td class="admin-text">{{ opinion.comentario }}</td>
+            <td class="text-center">
+              <button class="admin-action-btn danger" (click)="eliminarOpinion(opinion.id)" title="Eliminar">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cards móvil -->
+  <div class="d-md-none d-flex flex-column gap-3">
+    @for (opinion of opiniones; track opinion.id) {
+      <div class="snow-card p-3">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <div class="fw-bold admin-estacion-nombre">{{ opinion.usuario.nombre }}</div>
+          <span class="snow-badge">{{ opinion.estacion.nombre }}</span>
+        </div>
+        <div class="opinion-puntuacion-admin mb-2">
+          @for (i of [1,2,3,4,5]; track i) {
+            <i class="bi" [class.bi-star-fill]="i <= opinion.puntuacion" [class.bi-star]="i > opinion.puntuacion"></i>
+          }
+        </div>
+        <p class="admin-text mb-3">{{ opinion.comentario }}</p>
+        <button class="admin-action-btn danger w-100" (click)="eliminarOpinion(opinion.id)">
+          <i class="bi bi-trash me-2"></i>Eliminar
+        </button>
+      </div>
+    }
+  </div>
+
+}

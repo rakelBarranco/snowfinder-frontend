@@ -1,11 +1,11 @@
-import {Component, inject} from '@angular/core';
-import {AuthService} from '../../../services/auth-service';
-import {Router, RouterLink} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../../services/auth-service';
+import { Router, RouterLink } from '@angular/router';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-page',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './registro-page.html',
   styleUrl: './registro-page.css',
 })
@@ -13,45 +13,31 @@ export default class RegistroPage {
 
   private authService = inject(AuthService);
   private router = inject(Router);
+  private fb = inject(FormBuilder);
 
-  nombre = '';
-  email = '';
-  password = '';
   error = '';
   loading = false;
   mostrarPassword = false;
 
-  errores = { nombre: '', email: '', password: '' };
+  form = this.fb.group({
+    nombre:   ['', Validators.required],
+    email:    ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+  });
 
-  private validar(): boolean {
-    this.errores = { nombre: '', email: '', password: '' };
-
-    if (!this.nombre.trim())
-      this.errores.nombre = 'El nombre es obligatorio';
-
-    if (!this.email.trim())
-      this.errores.email = 'El email es obligatorio';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email))
-      this.errores.email = 'Introduce un email válido';
-
-    if (!this.password)
-      this.errores.password = 'La contraseña es obligatoria';
-    else if (this.password.length < 6)
-      this.errores.password = 'Mínimo 6 caracteres';
-
-    return !this.errores.nombre && !this.errores.email && !this.errores.password;
-  }
+  get nombre()   { return this.form.get('nombre')!; }
+  get email()    { return this.form.get('email')!; }
+  get password() { return this.form.get('password')!; }
 
   register() {
-    if (!this.validar()) return;
+    this.form.markAllAsTouched();
+    if (this.form.invalid) return;
 
     this.loading = true;
     this.error = '';
 
-    this.authService.register(this.nombre, this.email, this.password).subscribe({
-      next: () => {
-        this.router.navigate(['/login']);
-      },
+    this.authService.register(this.nombre.value!, this.email.value!, this.password.value!).subscribe({
+      next: () => this.router.navigate(['/login']),
       error: () => {
         this.error = 'Error al registrarse, prueba con otro email';
         this.loading = false;

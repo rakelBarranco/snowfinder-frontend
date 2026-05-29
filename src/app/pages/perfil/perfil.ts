@@ -6,10 +6,11 @@ import {OpinionService} from '../../services/opinion-service';
 import {NotificationService} from '../../services/notification-service';
 import {RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {EstacionCardComponent} from '../../components/estacion-card/estacion-card.component';
 
 @Component({
   selector: 'app-perfil',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, EstacionCardComponent],
   templateUrl: './perfil.html',
   styleUrl: './perfil.css',
 })
@@ -35,6 +36,8 @@ export default class Perfil implements OnInit {
   passwordNueva = '';
   passwordConfirm = '';
   erroresPassword = { actual: '', nueva: '', confirm: '' };
+
+  fotoPerfilFile: File | null = null;
 
   ngOnInit() {
     this.authService.getMe().subscribe({
@@ -146,5 +149,35 @@ export default class Perfil implements OnInit {
   abrirModalEliminarCuenta() {
     const modal = document.getElementById('modalEliminarCuenta');
     if (modal) new (window as any).bootstrap.Modal(modal).show();
+  }
+
+  onFotoSeleccionada(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      this.fotoPerfilFile = input.files[0];
+      this.subirFotoPerfil();
+    }
+  }
+
+  subirFotoPerfil() {
+    if (!this.fotoPerfilFile) return;
+    this.authService.subirFotoPerfil(this.fotoPerfilFile).subscribe({
+      next: (data) => {
+        this.usuario.fotoPerfil = data.url;
+        this.fotoPerfilFile = null;
+        this.notificationService.exito('Foto de perfil actualizada');
+      },
+      error: () => this.notificationService.error('Error al subir la foto')
+    });
+  }
+
+  getIniciales(): string {
+    if (!this.usuario?.nombre) return '?';
+    return this.usuario.nombre
+      .split(' ')
+      .map((n: string) => n[0])
+      .slice(0, 2)
+      .join('')
+      .toUpperCase();
   }
 }

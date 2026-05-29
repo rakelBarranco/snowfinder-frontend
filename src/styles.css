@@ -2,14 +2,10 @@
 @import 'bootstrap-icons/font/bootstrap-icons.min.css';
 @import 'leaflet/dist/leaflet.css';
 
-/* =============================================
-   FUENTES
-   ============================================= */
+/* FUENTES */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* =============================================
-   VARIABLES GLOBALES
-   ============================================= */
+/* VARIABLES GLOBALES*/
 :root {
   --snow-black:      #0a0f1e;
   --snow-dark:       #111827;
@@ -25,9 +21,7 @@
   --snow-danger-dim: rgba(224, 85, 85, 0.15);
 }
 
-/* =============================================
-   BASE
-   ============================================= */
+/* BASE */
 * {
   box-sizing: border-box;
 }
@@ -40,9 +34,7 @@ body {
   padding-top: 4rem;
 }
 
-/* =============================================
-   TIPOGRAFÍA
-   ============================================= */
+/* TIPOGRAFÍA */
 h1, h2, h3, h4, h5, h6 {
   color: var(--snow-white);
   font-weight: 300;
@@ -59,9 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 .tracking-widest { letter-spacing: 0.2em; }
 .fs-xs            { font-size: 0.72rem; }
 
-/* =============================================
-   CARDS
-   ============================================= */
+/* CARDS */
 .snow-card {
   background-color: var(--snow-card);
   border: 1px solid var(--snow-border);
@@ -74,9 +64,7 @@ h1, h2, h3, h4, h5, h6 {
   border-color: rgba(79, 195, 247, 0.3);
 }
 
-/* =============================================
-   BOTONES
-   ============================================= */
+/* BOTONES */
 .btn-snow {
   background-color: var(--snow-blue);
   color: var(--snow-black);
@@ -150,9 +138,8 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-/* =============================================
-   FORMULARIOS
-   ============================================= */
+/* FORMULARIOS
+*/
 .snow-input {
   background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--snow-border);
@@ -196,9 +183,8 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--snow-white);
 }
 
-/* =============================================
-   SECCIONES Y SEPARADORES
-   ============================================= */
+/* SECCIONES Y SEPARADORES
+ */
 .snow-section {
   padding: 5rem 0;
 }
@@ -215,9 +201,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 5rem 0;
 }
 
-/* =============================================
-   BADGES
-   ============================================= */
+/* BADGES*/
 .snow-badge {
   background-color: rgba(79, 195, 247, 0.1);
   color: var(--snow-blue);
@@ -230,9 +214,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0;
 }
 
-/* =============================================
-   TABLAS
-   ============================================= */
+/* TABLAS */
 .snow-table {
   color: var(--snow-text);
 }
@@ -263,9 +245,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--snow-text);
 }
 
-/* =============================================
-   MODALES — estilos compartidos
-   ============================================= */
+/* MODALES — estilos compartidos */
 .snow-modal .modal-content,
 .modal-content {
   background-color: var(--snow-card) !important;
@@ -292,18 +272,14 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
-/* =============================================
-   SPINNER — compartido
-   ============================================= */
+/* SPINNER — compartido */
 .admin-spinner {
   color: var(--snow-blue);
   width: 3rem;
   height: 3rem;
 }
 
-/* =============================================
-   SCROLLBAR
-   ============================================= */
+/* SCROLLBAR*/
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -322,9 +298,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--snow-muted);
 }
 
-/* =============================================
-   VALIDACIÓN DE FORMULARIOS
-   ============================================= */
+/* VALIDACIÓN DE FORMULARIOS*/
 .input-error {
   border-color: var(--snow-danger) !important;
 }

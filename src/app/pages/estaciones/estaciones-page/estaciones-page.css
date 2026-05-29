@@ -1,81 +1,18 @@
-/* =============================================
-   ESTACIONES PAGE — SnowFinder
-   ============================================= */
-
 /* --- Título hero --- */
 .estaciones-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
-/* --- Card imagen --- */
-.estacion-card {
-  cursor: pointer;
-}
-
-.estacion-card:hover .btn-snow-outline {
-  background-color: var(--snow-blue);
-  color: var(--snow-black);
-}
-
-.estacion-card-img {
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
-  border-bottom: 1px solid var(--snow-border);
-}
-
-.estacion-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.estacion-card:hover .estacion-card-img img {
-  transform: scale(1.05);
-}
-
-/* --- Card body --- */
-.estacion-card-body {
-  border-bottom: 1px solid var(--snow-border);
-}
-
-.estacion-card-nombre {
-  font-size: 1.1rem;
-  color: var(--snow-white);
-}
-
-.estacion-card-desc {
-  color: var(--snow-muted);
-  font-size: 0.8rem;
-  line-height: 1.7;
-  height: 3.4em;
-  overflow: hidden;
-  margin-bottom: 0;
-}
-
-/* --- Stats --- */
-.estacion-stat-left {
-  border-right: 1px solid var(--snow-border);
-}
-
-.estacion-stat-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--snow-blue);
-  margin-bottom: 0.25rem;
-}
-
-.estacion-stat-value {
-  color: var(--snow-white);
-}
-
-.estacion-stat-unit {
-  color: var(--snow-muted);
-  font-weight: 400;
-  font-size: 0.8rem;
+.estaciones-hero {
+  background-image:
+    linear-gradient(to bottom, rgba(10,15,30,0.5) 0%, rgba(10,15,30,0.9) 100%),
+    url('/assets/listado-hero.webp');
+  background-size: cover;
+  background-position: center;
+  min-height: 35vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 0 3rem;
 }
 
 /* --- Paginación --- */
@@ -84,3 +21,5 @@
   letter-spacing: 1px;
   border-radius: 0;
 }
+
+

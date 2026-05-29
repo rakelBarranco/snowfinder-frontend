@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {NotificationService, Notificacion} from '../../services/notification-service';
+import {NotificationService} from '../../services/notification-service';
 import {AsyncPipe} from '@angular/common';
 
 @Component({

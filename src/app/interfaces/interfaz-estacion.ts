@@ -31,6 +31,6 @@ export interface Opinion {
   puntuacion: number;
   comentario: string;
   fecha: string;
-  usuario: { nombre: string };
+  usuario: { nombre: string; fotoPerfil: string };
   estacion: { id: number; nombre: string };
 }
