@@ -35,7 +35,8 @@ export class AdminEstaciones implements OnInit {
     altitud:     [null, [Validators.required, Validators.min(1)]],
     latitud:     [null, [Validators.required, Validators.min(-90), Validators.max(90)]],
     longitud:    [null, [Validators.required, Validators.min(-180), Validators.max(180)]],
-    descripcion: ['', Validators.required]
+    descripcion: ['', Validators.required],
+    webcamUrl: ['']
   });
 
   urlForm: FormGroup = this.fb.group({
@@ -69,7 +70,8 @@ export class AdminEstaciones implements OnInit {
       altitud:     estacion.altitud,
       latitud:     estacion.latitud,
       longitud:    estacion.longitud,
-      descripcion: estacion.descripcion
+      descripcion: estacion.descripcion,
+      webcamUrl: estacion.webcamUrl || ''
     });
     this.modalService.open('modalEstacion');
   }

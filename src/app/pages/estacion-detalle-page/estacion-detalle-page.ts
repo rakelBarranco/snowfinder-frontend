@@ -9,6 +9,7 @@ import {FavoritoService} from '../../services/favorito-service';
 import {OpinionService} from '../../services/opinion-service';
 import {FormsModule} from '@angular/forms';
 
+
 @Component({
   selector: 'app-estacion-detalle-page',
   imports: [FormsModule],

@@ -147,6 +147,31 @@
 
       <hr class="snow-divider">
 
+      <hr class="snow-divider">
+
+      <!-- Webcam -->
+      <section class="mb-5">
+        <div class="label mb-4">Webcam en Directo</div>
+        @if (estacion.webcamUrl) {
+          <div class="snow-card p-4 p-lg-5 d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+              <h5 class="fw-light mb-1" style="color: var(--snow-white);">{{ estacion.nombre }}</h5>
+              <p class="mb-0" style="color: var(--snow-muted); font-size: 0.85rem;">Webcam en tiempo real de la estación</p>
+            </div>
+            <a [href]="estacion.webcamUrl" target="_blank" class="btn btn-snow-outline px-4 py-2">
+              <i class="bi bi-camera-video me-2"></i>Ver webcam
+            </a>
+          </div>
+        } @else {
+          <div class="snow-card text-center py-5">
+            <i class="bi bi-camera-video mb-3 detalle-empty-icon"></i>
+            <p class="label mb-0">Webcam no disponible para esta estación</p>
+          </div>
+        }
+      </section>
+
+      <hr class="snow-divider">
+
       <!-- Opiniones -->
       <section>
         <div class="label mb-4">Opiniones ({{ opiniones.length }})</div>

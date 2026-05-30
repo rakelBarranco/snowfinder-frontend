@@ -8,6 +8,7 @@ export interface Estacion {
   descripcion: string;
   altitud: number;
   imagenes: { id: number; url: string }[];
+  webcamUrl?: string;
 }
 
 export interface Meteo {
