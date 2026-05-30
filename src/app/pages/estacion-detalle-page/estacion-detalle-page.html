@@ -35,13 +35,18 @@
             </div>
           </div>
           @if (isLoggedIn()) {
-            <button class="btn py-3 px-4 px-md-5 favorito-btn"
-                    [class.btn-snow]="esFavorito"
-                    [class.btn-snow-outline]="!esFavorito"
-                    (click)="toggleFavorito()">
-              <i class="bi me-2" [class.bi-heart-fill]="esFavorito" [class.bi-heart]="!esFavorito"></i>
-              {{ esFavorito ? 'Guardado' : 'Añadir a Favoritos' }}
-            </button>
+            <div class="d-flex gap-3 flex-wrap">
+              <button class="btn py-3 px-4 px-md-5 favorito-btn"
+                      [class.btn-snow]="esFavorito"
+                      [class.btn-snow-outline]="!esFavorito"
+                      (click)="toggleFavorito()">
+                <i class="bi me-2" [class.bi-heart-fill]="esFavorito" [class.bi-heart]="!esFavorito"></i>
+                {{ esFavorito ? 'Guardado' : 'Añadir a Favoritos' }}
+              </button>
+              <button class="btn btn-snow-outline py-3 px-4 px-md-5" (click)="abrirModalReserva()">
+                <i class="bi bi-calendar-plus me-2"></i>Reservar
+              </button>
+            </div>
           }
         </div>
       </div>
@@ -147,8 +152,6 @@
 
       <hr class="snow-divider">
 
-      <hr class="snow-divider">
-
       <!-- Webcam -->
       <section class="mb-5">
         <div class="label mb-4">Webcam en Directo</div>
@@ -246,4 +249,23 @@
 
     </div>
   }
+
+  <!-- Modal reserva -->
+  <div class="modal fade" id="modalReserva" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-0 border-0">
+        <div class="modal-body p-4 p-md-5 text-center">
+          <i class="bi bi-calendar-plus mb-3" style="font-size: 2.5rem; color: var(--snow-blue); display: block;"></i>
+          <h5 class="fw-bold text-uppercase mt-2 mb-4" style="font-size: 0.9rem; color: var(--snow-white);">
+            Reservar en {{ estacion?.nombre }}
+          </h5>
+          <input type="date" class="snow-input w-100 mb-4" [(ngModel)]="fechaReserva" />
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-snow-ghost px-4 py-2" data-bs-dismiss="modal">Cancelar</button>
+            <button class="btn btn-snow px-4 py-2" (click)="confirmarReserva()">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

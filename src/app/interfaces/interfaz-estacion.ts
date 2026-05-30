@@ -35,3 +35,10 @@ export interface Opinion {
   usuario: { nombre: string; fotoPerfil: string };
   estacion: { id: number; nombre: string };
 }
+
+export interface Reserva {
+  id: number;
+  fecha: string;
+  estacion: { id: number; nombre: string; pais: string; };
+  usuario: { nombre: string; };
+}

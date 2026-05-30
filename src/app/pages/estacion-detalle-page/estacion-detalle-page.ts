@@ -8,6 +8,9 @@ import {AuthService} from '../../services/auth-service';
 import {FavoritoService} from '../../services/favorito-service';
 import {OpinionService} from '../../services/opinion-service';
 import {FormsModule} from '@angular/forms';
+import {ReservaService} from '../../services/reserva';
+import {ModalService} from '../../services/modal-service';
+import {NotificationService} from '../../services/notification-service';
 
 
 @Component({
@@ -24,6 +27,9 @@ export default class EstacionDetallePage implements OnInit {
   private favoritoService = inject(FavoritoService);
   private opinionService = inject(OpinionService);
   private authService = inject(AuthService);
+  private reservaService = inject(ReservaService);
+  private modalService = inject(ModalService);
+  private notificationService = inject(NotificationService);
 
   estacion: Estacion | null = null;
   meteo: Meteo | null = null;
@@ -32,6 +38,7 @@ export default class EstacionDetallePage implements OnInit {
   loading = true;
   private mapaInicializado = false;
   imagenSeleccionada: string | null = null;
+  fechaReserva = '';
 
   nuevaPuntuacion = 5;
   nuevoComentario = '';
@@ -143,5 +150,22 @@ export default class EstacionDetallePage implements OnInit {
       .addTo(mapa)
       .bindPopup(`<b>${this.estacion.nombre}</b>`)
       .openPopup();
+  }
+
+  abrirModalReserva() {
+    this.fechaReserva = '';
+    this.modalService.open('modalReserva');
+  }
+
+  confirmarReserva() {
+    if (!this.fechaReserva || !this.estacion) return;
+    this.reservaService.crearReserva(this.estacion.id, this.fechaReserva).subscribe({
+      next: () => {
+        this.modalService.close('modalReserva');
+        this.fechaReserva = '';
+        this.notificationService.exito('Reserva creada correctamente');
+      },
+      error: () => console.error('Error al crear la reserva')
+    });
   }
 }
